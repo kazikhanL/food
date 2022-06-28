@@ -1,0 +1,24 @@
+@import "./../variables/colors";
+
+@mixin scroll {
+    // fireFox
+    scrollbar-color: $color-accent1 $color-companion3;
+    scrollbar-width: thin;
+
+    // chrome
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: $color-companion3;
+    }
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+    &::-webkit-scrollbar-track {
+        margin: 0 3px;
+        background-color: $color-companion3;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-accent1;
+        border-radius: 5px;
+    }
+}
