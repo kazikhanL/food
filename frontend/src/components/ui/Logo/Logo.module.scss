@@ -1,0 +1,56 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.wrapper {
+    padding: 10px 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $color-dark1;
+    border-radius: 14px;
+
+    span {
+        margin-left: 7px;
+
+        color: $color-white;
+        font-family: $ff-bold;
+        text-transform: uppercase;
+
+        transition: color 0.5s;
+    }
+
+    svg {
+        path, rect, circle {
+            transition: fill 0.5s;
+        }
+    }
+
+    &:hover {
+        span {
+            color: $color-accent1;
+        }
+
+        svg {
+            path, rect, circle {
+                fill: $color-accent1;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 950px) {
+    .wrapper {
+        padding: 8px 15px;
+        
+        span {
+            font-size: 12px;
+        }
+
+        svg {
+            width: 26px;
+        }
+    }
+}

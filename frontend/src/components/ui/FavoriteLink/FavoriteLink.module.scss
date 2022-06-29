@@ -1,0 +1,66 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.link {
+    padding: 8px 12px;
+    border: 2px solid $color-dark2;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color 0.3s;
+
+    span {
+        margin-left: 7px;
+
+        font-family: $ff-medium;
+        font-size: 18px;
+
+        transition: color 0.3s;
+    }
+
+    &:hover {
+        border-color: $color-accent1;
+
+        span {
+            color: $color-accent1;
+        }
+
+        .icon {
+            fill: $color-accent1;
+
+            path {
+                stroke: $color-accent1;
+            }
+        }
+    }
+}
+
+.icon {
+    fill: transparent;
+    transition: fill 0.3s;
+
+    path {
+        stroke: $color-dark2;
+        transition: stroke 0.3s;
+    }
+}
+
+
+.active {
+    border-color: $color-accent1;
+
+    span {
+        color: $color-accent1;
+    }
+
+    .icon {
+        fill: $color-accent1;
+
+        path {
+            stroke: $color-accent1;
+        }
+    }
+}

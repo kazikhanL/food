@@ -1,10 +1,13 @@
 import type { NextPage } from "next";
 
-const Home: NextPage = () => {
+import Layout from "@Layout";
+
+const Home: NextPage = (): JSX.Element => {
     return (
-        <div className="container">
-            <h1>Организация питания на выезде</h1>
-        </div>
+        <Layout>
+            <div className="container">
+            </div>
+        </Layout>
     );
 };
 

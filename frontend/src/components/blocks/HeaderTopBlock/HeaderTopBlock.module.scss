@@ -1,0 +1,31 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.headerTop {
+    padding: 8px 0;
+    background-color: $color-dark3;
+}
+
+.headerTopInner {
+    color: $color-white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a,
+    p {
+        font-size: 16px;
+        line-height: 130%;
+    }
+
+    a:first-child {
+        font-family: $ff-medium;
+    }
+}
+
+@media (max-width: 950px) {
+    .headerTop {
+        display: none;
+    }
+}

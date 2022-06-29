@@ -1,0 +1,61 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.list {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+        width: 100%;
+        max-width: 115px;
+
+        margin-left: 30px;
+    }
+}
+
+.link {
+    display: block;
+
+    color: $color-dark2;
+    font-family: $ff-medium;
+    font-size: 18px;
+    line-height: 120%;
+
+    transition: color 0.5s;
+
+    &:hover {
+        color: $color-accent1;
+    }
+}
+
+.active {
+    color: $color-accent1;
+}
+
+
+@media (max-width: 1250px) {
+    .list {
+        li {
+            margin-left: 15px;
+        }
+    }
+}
+
+@media (max-width: 1124px) {
+    .list {
+        li {
+            margin-left: 10px;
+        }
+    }
+
+    .link {
+        font-size: 14px;
+        font-family: $ff-bold;
+    }
+}
+
+@media (max-width: 950px) {
+    .list {
+        display: none;
+    }
+}

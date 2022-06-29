@@ -1,0 +1,34 @@
+@import "./../../../styles/variables/colors";
+
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+        margin-left: 10px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.searchButton {
+    padding: 8px 12px;
+
+    svg path {
+        fill: $color-dark2;
+        transition: fill 0.3s;
+    }
+
+    &:hover svg path {
+        fill: $color-accent1;
+    }
+}
+
+@media (max-width: 950px) {
+    .panel {
+        display: none;
+    }
+}

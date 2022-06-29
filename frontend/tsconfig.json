@@ -19,15 +19,16 @@
 			"@components/*": ["src/components/*"],
 			"@helpers/*": ["src/helpers/*"],
 			"@data/*": ["src/data/*"],
-			"@constants": ["src/constants/index.js"],
+			"@constants": ["src/constants/index.ts"],
 			"@styles/*": ["src/styles/*"],
 			"@context/*": ["src/context/*"],
 			"@graphql/*": ["src/graphql/*"],
 			"@store/*": ["src/store/*"],
 			"@hooks/*": ["src/hooks/*"],
-			"@types/*": ["src/types/*"]
+			"@Layout": ["src/Layout/index.ts"],
+			"@interfaces/*": ["src/interfaces/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "babel.config.js", "next.config.js"],
     "exclude": ["node_modules"]
 }
