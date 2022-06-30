@@ -1,0 +1,48 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.list {
+    margin-top: 20px;
+
+    li {
+        margin-top: 15px;
+
+        display: flex;
+        align-items: center;
+
+        p {
+            font-size: 16px;
+            line-height: 130%;
+        }
+
+        a {
+            font-family: $ff-bold;
+            font-size: 18px;
+        }
+    }
+}
+
+.iconWrapper {
+    margin-right: 8px;
+
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid $color-dark4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        path {
+            fill: $color-dark4;
+        }
+    }
+}
+
+@media (min-width: 950px) {
+    .list {
+        display: none;
+    }
+}

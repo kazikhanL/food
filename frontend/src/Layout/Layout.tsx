@@ -1,6 +1,7 @@
 import { LayoutProps } from "./Layout.props";
 import { IPageLink } from "@interfaces/IPageLink";
 import HeaderSection from "@components/sections/HeaderSection";
+import FooterSection from "@components/sections/FooterSection";
 
 const getPages = (): IPageLink[] => {
     return [
@@ -36,6 +37,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
             <main>
                 {children}
             </main>
+            <FooterSection pages={pages} />
         </>
     );
 };
