@@ -1,4 +1,5 @@
 @import "./../variables/fonts";
+@import "./../variables/colors";
 
 * {
     margin: 0;
@@ -15,6 +16,7 @@ h5,
 h6 {
     margin: 0;
 
+    color: $color-dark1;
     line-height: 120%;
     font-family: $ff-bold;
 }

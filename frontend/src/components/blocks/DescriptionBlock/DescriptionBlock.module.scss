@@ -1,0 +1,96 @@
+@import "./../../../styles/variables/colors";
+
+.textWrapper {
+    margin-top: 35px;
+
+    p {
+        position: relative;
+        margin-top: 20px;
+        padding-left: 35px;
+
+        color: $color-dark1;
+        font-size: 20px;
+        line-height: 130%;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+
+            display: block;
+            width: 20px;
+            height: 13px;
+            border-radius: 4px;
+            background-color: $color-accent1;
+        }
+    }
+}
+
+.arrow {
+    display: none;
+}
+
+@media (max-width: 1110px) {
+    .title {
+        font-size: 58px;
+    }
+}
+
+@media (max-width: 950px) {
+    .wrapper {
+        width: 95%;
+        padding: 28px 16px 28px 16px;
+        background: rgba(240, 240, 254, 0.9);
+        backdrop-filter: blur(5px);
+        border-radius: 30px;
+    }
+
+    .title {
+        font-size: 36px;
+        line-height: 100%;
+    }
+
+    .textWrapper {
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .wrapper {
+        position: absolute;
+        padding-bottom: 16px;
+    }
+
+    .arrow {
+        display: block;
+        margin: 0 auto;
+        margin-top: 17px;
+    }
+
+    .title {
+    }
+
+    .textWrapper {
+        margin-top: 15px;
+        
+        p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .wrapper {
+        padding: 10px;
+        border-radius: 15px;
+    }
+
+    .title {
+        font-size: 27px;
+    }
+}

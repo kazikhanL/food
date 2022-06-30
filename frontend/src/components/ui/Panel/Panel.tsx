@@ -9,8 +9,8 @@ const Panel = (): JSX.Element => {
             <button className={styles.searchButton}>
                 <SearchIcon />
             </button>
-            <FavoriteLink count={10} />
-            <CartLink totalPrice={1000000} />
+            <FavoriteLink count={0} />
+            <CartLink totalPrice={0} />
         </div>
     );
 };
