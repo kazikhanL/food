@@ -1,0 +1,71 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.accordion {
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.title {
+    padding-right: 30px;
+    font-size: 20px;
+    font-family: $ff-regular;
+}
+
+.answer {
+    overflow: hidden;
+
+    p {
+        padding: 10px;
+
+        color: $color-dark3;
+        font-size: 18px;
+    }
+}
+
+
+.icon {
+    position: relative;
+
+    &::after, &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 26px;
+        height: 2px;
+        
+        display: block;
+        background-color: $color-accent1;
+
+        transform: translate(-50%, -50%);
+        transition: transform 0.5s;
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+}
+
+.active {
+    .icon::after {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+@media (max-width: 950px) {
+    .title {
+        font-size: 16px;
+    }
+
+    .answer {
+        p {
+            font-size: 14px;
+        }
+    }
+}

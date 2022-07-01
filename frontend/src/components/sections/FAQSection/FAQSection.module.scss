@@ -1,0 +1,30 @@
+@import "./../../../styles/variables/colors";
+
+.section {
+    padding-bottom: 30px;
+}
+
+.list {
+    margin-top: 45px;
+    padding-top: 10px;
+
+    border-top: 1px solid #EDEDED;
+
+    li {
+        padding: 24px 60px;
+
+        border-bottom: 1px solid #EDEDED;
+
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 950px) {
+    .list {
+
+        li {
+            padding: 24px 10px;
+            padding-right: 30px;
+        }
+    }
+}
