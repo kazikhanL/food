@@ -1,0 +1,86 @@
+@import "./../../../styles/variables/fonts";
+
+.description {
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+
+    img {
+        float: right;
+        margin-left: 75px;
+        margin-bottom: 20px;
+
+        width: 100%;
+        height: auto;
+        max-width: 486px;
+        border-radius: 30px;
+    }
+
+    p {
+        margin-top: 10px;
+
+        font-size: 20px;
+        line-height: 130%;
+    }
+
+    button {
+       display: none;
+    }
+}
+
+@media (max-width: 950px) {
+    .description {        
+        margin-top: 35px;
+        img {
+            width: 50%;
+            margin-left: 20px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        button {
+            padding: 15px 18px;
+
+            font-size: 14px;
+            font-family: $ff-medium;
+    
+            width: 49%;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+
+            background: linear-gradient(180deg, rgba(250, 250, 250, 0.15) 0%, rgba(250, 250, 250, 0.9) 47.92%, #FAFAFA 100%);
+            border-radius: 0px 0px 8px 8px;
+    
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            svg {
+                margin-left: 10px;
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .description {
+        margin-top: 15px;
+
+        img {
+            margin: 0;
+            float: none;
+
+            width: 100%;
+            max-width: none;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+}
