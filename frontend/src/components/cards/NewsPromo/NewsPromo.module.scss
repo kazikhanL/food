@@ -1,0 +1,127 @@
+@import "./../../../styles/variables/colors";
+
+.card {
+    padding: 45px 40px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100%;
+    border-radius: 30px;
+    border: 2px solid $color-companion1;
+
+    cursor: pointer;
+
+    &:hover {
+        .info {
+            color: $color-accent1;
+
+            svg path {
+                stroke: $color-accent1;
+            }
+        }
+    }
+}
+
+.image {
+    margin-top: 30px;
+
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.description {
+    p {
+        margin-top: 20px;
+
+        font-size: 20px;
+        line-height: 130%;
+    }
+}
+
+.info {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    font-size: 16px;
+    color: $color-dark3;
+    transition: color 0.3s;
+
+    svg {
+        margin-left: 10px;
+
+        path {
+            stroke: $color-dark3;
+            transition: stroke 0.3s;
+        }
+    }
+}
+
+.link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    opacity: 0;
+    color: transparent;
+}
+
+.reverse {
+    border-color: transparent;
+    background-color: $color-companion1;
+
+    .description {
+        order: 1;
+    }
+
+    .image {
+        margin: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 950px) {
+    .card {
+        padding: 10px 8px;
+        border-radius: 15px;
+    }
+
+    .description {
+        h3 {
+            margin-top: 15px;
+
+            font-size: 18px;
+            line-height: 120%;
+        }
+
+        p {
+            margin-top: 8px;
+
+            font-size: 14px;
+            line-height: 120%;
+        }
+    }
+
+    .info {
+        display: none;
+    }
+
+    .image {
+        margin-top: 10px;
+    }
+
+    .reverse {
+        .image {
+            margin-bottom: 10px;
+        }
+    }
+}

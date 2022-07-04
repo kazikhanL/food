@@ -1,0 +1,46 @@
+@import "./../../../styles/variables/colors";
+
+.section {
+    padding-bottom: 80px;
+    position: relative;
+    background-color: $color-bg3;
+}
+
+.header {
+    position: relative;
+}
+
+.link {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.newsContainer {
+    margin-top: 60px;
+}
+
+@media (max-width: 950px) {
+    .newsContainer {
+        margin-top: 30px;
+
+        width: 100%;
+        padding-right: 0;
+        padding-left: 2.5%;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        position: static;
+    }
+
+    .link {
+        top: auto;
+        right: auto;
+        left: 50%;
+        bottom: 15px;
+        transform: translateX(-50%);
+    }
+}

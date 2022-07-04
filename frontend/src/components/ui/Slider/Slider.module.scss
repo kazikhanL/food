@@ -1,0 +1,41 @@
+@import "./../../../styles/variables/colors";
+
+.wrapper {
+    position: relative;
+}
+
+.leftBtn, .rightBtn {
+    position: absolute;
+    top: 47%;
+}
+
+.leftBtn {
+    left: 3px;
+}
+
+.rightBtn {
+    right: 3px;
+}
+
+.dots {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    margin: 3px;    
+
+    width: 18px;
+    height: 6px;
+    border-radius: 3px;
+    border: 1px solid $color-accent2;
+
+    transition: background-color 0.3s, width 0.3s;
+}
+
+.dotActive {
+    width: 36px;
+    background-color: $color-accent2;
+}
