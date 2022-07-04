@@ -1,0 +1,12 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.subTitle {
+    margin-top: 5px;
+
+    font-size: 20px;
+    font-family: $ff-regular;
+    text-align: center;
+
+    color: $color-dark3;
+}

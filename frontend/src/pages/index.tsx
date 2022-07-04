@@ -12,6 +12,9 @@ import { IFAQItem } from "@interfaces/IFAQ";
 import NewsPromoSection from "@components/sections/NewsPromoSection";
 import { INews } from "@interfaces/INews";
 
+import AssortmentSection from "@components/sections/AssortmentSection";
+import { IPromoCard } from "@interfaces/IPromoCard";
+
 const promoInfo: IPromoProps = {
     image: "/images/promo/promo-main.png",
     title: "Организация питания на выезде",
@@ -114,10 +117,73 @@ const News: INews[] = [
     },
 ];
 
+const PromoCards: IPromoCard[] = [
+    {
+        image: "/images/promo-card/promo-card.png",
+        title: "Аренда фудтрака",
+        description: [
+            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
+            "Дополнительно можно установить холодильник-витрину для напитков.",
+        ],
+        characteristics: [
+            "Мобильность",
+            "Универсальность",
+            "Всесезонность",
+        ],
+        link: "/"
+    },
+    {
+        image: "/images/promo-card/promo-card.png",
+        title: "Аренда фудтрака",
+        description: [
+            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
+            "Дополнительно можно установить холодильник-витрину для напитков.",
+        ],
+        characteristics: [
+            "Мобильность",
+            "Всесезонность",
+            "Всесезонность",
+            "Всесезонность",
+        ],
+        link: "/1"
+    },
+    {
+        image: "/images/promo-card/promo-card.png",
+        title: "Аренда фудтрака",
+        description: [
+            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
+            "Дополнительно можно установить холодильник-витрину для напитков.",
+        ],
+        characteristics: [
+            "Мобильность",
+            "Универсальность", 
+            "Всесезонность",
+            "Всесезонность",
+        ],
+        link: "/2"
+    },
+    {
+        image: "/images/promo-card/promo-card.png",
+        title: "Аренда фудтрака",
+        description: [
+            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
+            "Дополнительно можно установить холодильник-витрину для напитков.",
+        ],
+        characteristics: [
+            "Мобильность",
+            "Универсальность",
+            "Всесезонность",
+        ],
+        link: "/3"
+    },
+];
+
+
 const Home: NextPage = (): JSX.Element => {
     return (
         <>
             <PromoSection {...promoInfo} />
+            <AssortmentSection cards={PromoCards} />
             <NewsPromoSection news={News} />
             <FAQSection FAQ={FAQ} />
             <SeoSection {...seoInfo} />
@@ -126,4 +192,3 @@ const Home: NextPage = (): JSX.Element => {
 };
 
 export default Home;
-
