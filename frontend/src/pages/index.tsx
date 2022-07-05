@@ -18,6 +18,8 @@ import { IPromoCard } from "@interfaces/IPromoCard";
 import PartnerSection from "@components/sections/PartnerSection";
 import { IPartnerCard } from "@interfaces/IPartnerCard";
 
+import ContactsSection from "@components/sections/ContactsSection";
+
 const promoInfo: IPromoProps = {
     image: "/images/promo/promo-main.png",
     title: "Организация питания на выезде",
@@ -133,7 +135,7 @@ const PromoCards: IPromoCard[] = [
             "Универсальность",
             "Всесезонность",
         ],
-        link: "/"
+        link: "/",
     },
     {
         image: "/images/promo-card/promo-card.png",
@@ -148,7 +150,7 @@ const PromoCards: IPromoCard[] = [
             "Всесезонность",
             "Всесезонность",
         ],
-        link: "/1"
+        link: "/1",
     },
     {
         image: "/images/promo-card/promo-card.png",
@@ -163,7 +165,7 @@ const PromoCards: IPromoCard[] = [
             "Всесезонность",
             "Всесезонность",
         ],
-        link: "/2"
+        link: "/2",
     },
     {
         image: "/images/promo-card/promo-card.png",
@@ -177,7 +179,7 @@ const PromoCards: IPromoCard[] = [
             "Универсальность",
             "Всесезонность",
         ],
-        link: "/3"
+        link: "/3",
     },
 ];
 
@@ -240,6 +242,7 @@ const Home: NextPage = (): JSX.Element => {
             <AssortmentSection cards={PromoCards} />
             <NewsPromoSection news={News} />
             <FAQSection FAQ={FAQ} />
+            <ContactsSection />
             <SeoSection {...seoInfo} />
         </>
     );

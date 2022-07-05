@@ -23,3 +23,12 @@
         border-color: $color-white;
     }
 }
+
+.dark {
+    color: $color-white;
+    background-color: $color-dark1;
+
+    &:hover {
+        background-color: #031340;
+    }
+}
