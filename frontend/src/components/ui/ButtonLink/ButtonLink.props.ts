@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, AnchorHTMLAttributes } from "react";
+import { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
 
 export type Color = "dark";
 

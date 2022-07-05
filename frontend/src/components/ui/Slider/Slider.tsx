@@ -9,6 +9,7 @@ import SliderDots from "./SliderDots";
 
 const Slider = ({
     slides,
+    spacing = 15,
     hasDots = false,
     hasControllers = false,
     selectedSlide = 0,
@@ -46,7 +47,7 @@ const Slider = ({
         initial: selectedSlide,
         mode: "free-snap",
         loop: true,
-        slides: { perView: currentCapacity, spacing: 15 },
+        slides: { perView: currentCapacity, spacing: spacing },
         slideChanged(slider) {
             setCurrentSlide(slider.track.details.rel);
         },

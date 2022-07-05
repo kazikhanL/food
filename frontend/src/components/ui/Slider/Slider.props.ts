@@ -1,11 +1,12 @@
 export interface SliderProps {
-    readonly slides: JSX.Element[],
-    readonly selectedSlide?: number,
-    readonly hasDots?: boolean,
-    readonly hasControllers?: boolean,
-    readonly mobCapacity?: number,
-    readonly tabCapacity?: number,
-    readonly deskCapacity?: number,
+    readonly slides: JSX.Element[];
+    readonly spacing?: number;
+    readonly selectedSlide?: number;
+    readonly hasDots?: boolean;
+    readonly hasControllers?: boolean;
+    readonly mobCapacity?: number;
+    readonly tabCapacity?: number;
+    readonly deskCapacity?: number;
 }
 
 export interface ControllerProps {

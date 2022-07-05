@@ -15,6 +15,9 @@ import { INews } from "@interfaces/INews";
 import AssortmentSection from "@components/sections/AssortmentSection";
 import { IPromoCard } from "@interfaces/IPromoCard";
 
+import PartnerSection from "@components/sections/PartnerSection";
+import { IPartnerCard } from "@interfaces/IPartnerCard";
+
 const promoInfo: IPromoProps = {
     image: "/images/promo/promo-main.png",
     title: "Организация питания на выезде",
@@ -178,11 +181,62 @@ const PromoCards: IPromoCard[] = [
     },
 ];
 
+const PartnerCards: IPartnerCard[] = [
+    {
+        index: 1,
+        title: "Работаем официально",
+        description: [
+            "Обладаем всеми разрешительными документами и патентами",
+            "С нами не страшны проверки контролирующих органов",
+        ],
+    },
+    {
+        index: 2,
+        title: "Проверенные поставщики",
+        description: [
+            "Закупаем продукты со специальной маркировкой в соответствии с требованиями законодательства",
+            "Работаем только с официалами!",
+        ],
+    },
+    {
+        index: 3,
+        title: "Официальная касса",
+        description: [
+            "Официально зарегистрированный кассовый аппарат и лицензия на торговлю ",
+            "Предоставляем все чеки",
+        ],
+    },
+    {
+        index: 4,
+        title: "Многолетний опыт",
+        description: [
+            "Мы кормим людей вкусно и сытно с 2007 года!",
+            "Знаем всё про организацию питания на выезде",
+        ],
+    },
+    {
+        index: 5,
+        title: "Экспертная команда",
+        description: [
+            "Мы поможем вам подобрать самый оптимальный вариант кейтеринга",
+            "А наши повара приятно удивят  гостей вашего мероприятия",
+        ],
+    },
+    {
+        index: 6,
+        title: "Разнообразное меню",
+        description: [
+            "Мы разработали варианты меню на все случаи жизни: от закусок и уличной еды до роскошного банкета!",
+        ],
+    },
+]; 
+
 
 const Home: NextPage = (): JSX.Element => {
     return (
         <>
             <PromoSection {...promoInfo} />
+            <PartnerSection descriptionCards={PartnerCards} />
             <AssortmentSection cards={PromoCards} />
             <NewsPromoSection news={News} />
             <FAQSection FAQ={FAQ} />

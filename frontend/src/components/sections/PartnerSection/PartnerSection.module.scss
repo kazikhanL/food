@@ -1,0 +1,32 @@
+.list {
+    margin-top: 25px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+
+    li {
+        flex-basis: 33%;
+    }
+}
+
+.sliderWrapper {
+    display: none;
+}
+
+@media (max-width: 950px) {
+    .container {
+        width: 100%;
+        padding-left: 2.5%;
+    }
+
+    .list {
+        display: none;
+    }
+
+    .sliderWrapper {
+        margin-top: 20px;
+        display: block;
+    }
+}

@@ -1,0 +1,207 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.wrapper {
+    position: relative;
+    margin-top: 52px;
+    padding: 20px 0;
+
+    border-radius: 30px;
+    background-color: $color-accent1;
+
+    color: white;
+
+    &:hover {
+        .fact::after {
+            width: 95%;
+            height: 95%;
+        }
+    }
+}
+
+.description {
+    padding-left: 105px;
+    padding-right: 300px;
+
+    h3 {
+        color: white;
+    }
+
+    p {
+        margin-top: 7px;
+
+        font-size: 20px;
+        line-height: 130%;
+    }
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.fact {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $color-accent2;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 120%;
+        height: 120%;
+        border: 2px solid $color-accent2;
+        border-radius: 50%;
+
+        transition: width 0.5s, height 0.5s;
+    }
+}
+
+.imgWrapper {
+    position: absolute;
+    top: -15px;
+    right: -70px;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.thunder {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition: all 1s;
+
+    &:nth-of-type(1) {
+        top: -30px;
+        left: -50px;
+        transform: rotate(40deg);
+        animation: thunderAnim1 0.6s linear 0s infinite alternate-reverse forwards;
+    }
+
+    &:nth-of-type(2) {
+        top: 40px;
+        left: -90px;
+        transform: rotate(5deg);
+        animation: thunderAnim2 0.6s linear 0s infinite alternate-reverse forwards;
+    }
+
+    &:nth-of-type(3) {
+        top: 110px;
+        left: -70px;
+        transform: rotate(-30deg);
+        animation: thunderAnim3 0.6s linear 0s infinite alternate-reverse forwards;
+    }
+}
+
+@keyframes thunderAnim1 {
+    0% {
+        top: -30px;
+        left: -50px;
+    }
+    100% {
+        top: -20px;
+        left: -30px;
+    }
+}
+
+@keyframes thunderAnim2 {
+    0% {
+        top: 40px;
+        left: -90px;
+    }
+    100% {
+        top: 40px;
+        left: -75px;
+    }
+}
+
+@keyframes thunderAnim3 {
+    0% {
+        top: 110px;
+        left: -70px;
+    }
+    100% {
+        top: 100px;
+        left: -50px;
+    }
+}
+
+
+@media (max-width: 950px) {
+    .description {
+        padding-right: 210px;
+        padding-left: 70px;
+
+        h3 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .imgWrapper {
+        right: -100px;
+        transform: scale(0.7);
+    }
+
+    .fact {
+        top: -10px;
+        left: -10px;
+
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        padding: 0;
+        border-radius: 25px;
+    }
+
+    .fact {
+        top: -20px;
+        left: -20px;
+        transform: scale(0.6);
+    }
+
+    .description {
+        padding: 15px;
+        padding-top: 30px;
+
+        h3 {
+            margin-bottom: 40px;
+            padding-right: 140px;
+        }
+    }
+
+    .imgWrapper {
+        top: -80px;
+        transform: scale(0.6);
+    }
+
+    .btn {
+        display: block;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+}
