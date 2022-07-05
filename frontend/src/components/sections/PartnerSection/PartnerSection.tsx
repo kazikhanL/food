@@ -6,7 +6,7 @@ import PartnerCard from "@components/cards/PartnerCard";
 import Slider from "@components/ui/Slider";
 
 const PartnerSection = ({ descriptionCards }: PartnerSectionProps): JSX.Element => {
-    const slides = descriptionCards.map((item) => <PartnerCard {...item} />);
+    const slides = descriptionCards.map((item) => <PartnerCard key={item.index} {...item} />);
 
     return (
         <section>
@@ -23,9 +23,9 @@ const PartnerSection = ({ descriptionCards }: PartnerSectionProps): JSX.Element 
                 </ul>
 
                 <div className={styles.sliderWrapper}>
-                    <Slider 
-                        hasDots 
-                        slides={slides} 
+                    <Slider
+                        hasDots
+                        slides={slides}
                         spacing={0}
                         tabCapacity={2.7}
                     />

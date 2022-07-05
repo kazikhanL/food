@@ -24,15 +24,15 @@ const NewsPromoSection = ({ news }: NewsPromoSectionProps): JSX.Element => {
                 </ButtonLink>
             </div>
             <div className={`container ${styles.newsContainer}`}>
-                    <Slider
-                        slides={slides}
-                        deskCapacity={2}
-                        tabCapacity={2.2}
-                        mobCapacity={1.2}
-                        hasControllers
-                        hasDots
-                    />
-                </div>
+                <Slider
+                    slides={slides}
+                    deskCapacity={2}
+                    tabCapacity={2.2}
+                    mobCapacity={1.2}
+                    hasControllers
+                    hasDots
+                />
+            </div>
         </section>
     );
 };

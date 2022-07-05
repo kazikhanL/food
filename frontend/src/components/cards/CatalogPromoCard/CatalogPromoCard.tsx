@@ -10,7 +10,7 @@ const CatalogPromoCard = ({
     title,
     description,
     characteristics,
-    link
+    link,
 }: IPromoCard): JSX.Element => {
     return (
         <div className={styles.card}>
@@ -24,13 +24,13 @@ const CatalogPromoCard = ({
                     {description.map((text, index) => <p key={index}>{text}</p>)}
                 </div>
                 <ul className={styles.characters}>
-                {characteristics.map((text, index) => (
-                    <li key={index}>
-                        <StarIcon className={styles.star} />
-                        <p>{text}</p>
-                    </li>
-                ))}
-            </ul>
+                    {characteristics.map((text, index) => (
+                        <li key={index}>
+                            <StarIcon className={styles.star} />
+                            <p>{text}</p>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
             <Link href={link} prefetch={false}>

@@ -33,7 +33,7 @@ const Slider = ({
         } else {
             setCurrentCapacity(tabCapacity);
         }
-    }
+    };
 
     useEffect(() => {
         updateCapcity();
@@ -41,6 +41,8 @@ const Slider = ({
         window.addEventListener("resize", updateCapcity);
 
         return () => window.removeEventListener("resize", updateCapcity);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [sliderRef, instanceRef] = useKeenSlider<HTMLUListElement>({

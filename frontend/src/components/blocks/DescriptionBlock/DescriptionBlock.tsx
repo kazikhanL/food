@@ -6,9 +6,9 @@ import { DescriptionBlockProps } from "./DescriptionBlock.props";
 import DownArrowIcon from "@components/icons/DownArrowIcon";
 
 const DescriptionBlock = ({ title, description, className = "" }: DescriptionBlockProps): JSX.Element => {
-    const PADDING: number = 27;
-    const DEFAULT_POSITION: number = 10;
-    const MAX_OUTSIDE_POSITION: number = -600;
+    const PADDING = 27;
+    const DEFAULT_POSITION = 10;
+    const MAX_OUTSIDE_POSITION = -600;
 
     const titleRef = useRef<HTMLHeadingElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);

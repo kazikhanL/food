@@ -7,9 +7,9 @@ import toWebpFormat from "@helpers/toWebpFormat";
 import ArrowIcon from "@components/icons/ArrowIcon";
 
 const SeoSection = ({ image, title, description }: ISeoProps): JSX.Element => {
-    const MAX_TAB_SIZE: number = 950;
-    const MAX_MOB_SIZE: number = 500;
-    const DEFAULT_HEIGHT: number = 365;
+    const MAX_TAB_SIZE = 950;
+    const MAX_MOB_SIZE = 500;
+    const DEFAULT_HEIGHT = 365;
 
     const imageRef = useRef<HTMLImageElement>(null);
 
