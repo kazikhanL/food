@@ -1,0 +1,104 @@
+.card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        object-fit: cover;
+        display: block;
+    }
+
+    &:hover {
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+
+            svg {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.playBtn {
+    width: 80px;
+    height: 80px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s;
+    z-index: 2;
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+    &:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    &:active {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0);
+
+    transition: background-color 0.5s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 47px;
+        height: 47px;
+        
+        opacity: 0;
+        transition: opacity 0.5s, transform 0.5s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    .card {
+        height: min-content;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+    }
+
+    .playBtn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .overlay {
+        svg {
+            width: 48px;
+            height: 48px;
+        }
+    }
+}

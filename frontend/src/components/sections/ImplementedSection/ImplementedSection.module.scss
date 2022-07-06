@@ -1,0 +1,11 @@
+.sliderWrapper {
+    display: none;
+}
+
+
+@media (max-width: 950px) {
+    .sliderWrapper {
+        margin-top: 30px;
+        display: block;
+    }
+}

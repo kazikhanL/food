@@ -12,6 +12,9 @@ import { IFAQItem } from "@interfaces/IFAQ";
 import NewsPromoSection from "@components/sections/NewsPromoSection";
 import { INews } from "@interfaces/INews";
 
+import ImplementedSection from "@components/sections/ImplementedSection";
+import { IGalleryCard } from "@interfaces/IGalleryCard";
+
 import AssortmentSection from "@components/sections/AssortmentSection";
 import { IPromoCard } from "@interfaces/IPromoCard";
 
@@ -233,12 +236,71 @@ const PartnerCards: IPartnerCard[] = [
     },
 ]; 
 
+const GalleryCards: IGalleryCard[] = [
+    {
+        id: 0,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        video: "/videos/Foodtruck.mp4",
+    },
+    {
+        id: 1,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery-mobil.jpg",
+    },
+    {
+        id: 2,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery-mobil.jpg",
+    },
+    {
+        id: 4,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        video: "/videos/Foodtruck.mp4",
+    },
+    {
+        id: 5,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery-mobil.jpg",
+    },
+    {
+        id: 6,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery-mobil.jpg",
+    },
+    {
+        id: 7,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery-mobil.jpg",
+    },
+    {
+        id: 3,
+        midImage: "/images/gallery.jpg",
+        miniImage: "/images/gallery.jpg",
+        phoneImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery-mobil.jpg",
+    },
+];
 
 const Home: NextPage = (): JSX.Element => {
     return (
         <>
             <PromoSection {...promoInfo} />
             <PartnerSection descriptionCards={PartnerCards} />
+            <ImplementedSection cards={GalleryCards} />
             <AssortmentSection cards={PromoCards} />
             <NewsPromoSection news={News} />
             <FAQSection FAQ={FAQ} />
