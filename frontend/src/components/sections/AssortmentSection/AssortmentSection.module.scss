@@ -10,7 +10,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 
-    li {
+    & > li {
         margin-top: 70px;
     }
 }
@@ -21,7 +21,7 @@
         flex-direction: row;
         justify-content: space-between;
 
-        li {
+        & > li {
             margin-top: 70px;
             width: 48%;
         }
@@ -30,7 +30,7 @@
 
 @media (max-width: 690px) {
     .list {
-        li {
+        & > li {
             width: 100%;
         }
     }
