@@ -123,6 +123,16 @@ const News: INews[] = [
         ],
         date: new Date,
     },
+    {
+        image: "/images/news/news.jpg",
+        title: "Какой-то очень длинный в две строчки заголовок другой статьи 6",
+        description: [
+            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
+            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
+            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
+        ],
+        date: new Date,
+    },
 ];
 
 const PromoCards: IPromoCard[] = [
@@ -249,14 +259,14 @@ const GalleryCards: IGalleryCard[] = [
         midImage: "/images/gallery.jpg",
         miniImage: "/images/gallery.jpg",
         phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery.jpg",
     },
     {
         id: 2,
         midImage: "/images/gallery.jpg",
         miniImage: "/images/gallery.jpg",
         phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery.jpg",
     },
     {
         id: 4,
@@ -270,28 +280,28 @@ const GalleryCards: IGalleryCard[] = [
         midImage: "/images/gallery.jpg",
         miniImage: "/images/gallery.jpg",
         phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery.jpg",
     },
     {
         id: 6,
         midImage: "/images/gallery.jpg",
         miniImage: "/images/gallery.jpg",
         phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery.jpg",
     },
     {
         id: 7,
         midImage: "/images/gallery.jpg",
         miniImage: "/images/gallery.jpg",
         phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery.jpg",
     },
     {
         id: 3,
         midImage: "/images/gallery.jpg",
         miniImage: "/images/gallery.jpg",
         phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery-mobil.jpg",
+        modalImage: "/images/gallery.jpg",
     },
 ];
 

@@ -10,7 +10,6 @@ const GalleryCard = ({
     midImage,
     miniImage,
     phoneImage,
-    modalImage,
     video,
     visibleImage = "mobil",
 }: IGalleryCard): JSX.Element => {

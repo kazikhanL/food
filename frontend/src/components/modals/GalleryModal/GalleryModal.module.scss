@@ -1,0 +1,42 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+
+    img, video {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+}
+
+.dots {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+
+    button {
+        border-color: white !important;
+    }
+}
+
+.activeDot {
+    background-color: white !important;
+}
+
+.btn {
+    &:first-of-type {
+        left: -70px !important;
+    }
+
+    &:last-of-type {
+        right: -70px !important;
+    }
+}
+
+@media (max-width: 950px) {
+    .btn {
+        display: none !important;
+    }
+}

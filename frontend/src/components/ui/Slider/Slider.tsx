@@ -16,6 +16,9 @@ const Slider = ({
     mobCapacity = 1.3,
     tabCapacity = 2.3,
     deskCapacity = 3,
+    dotsClassName = "",
+    dotActiveClassName = "",
+    controllersClassName = "",
 }: SliderProps): JSX.Element => {
     const [currentSlide, setCurrentSlide] = useState<number>(selectedSlide);
     const [currentCapacity, setCurrentCapacity] = useState<number>(deskCapacity);
@@ -42,7 +45,7 @@ const Slider = ({
 
         return () => window.removeEventListener("resize", updateCapcity);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [sliderRef, instanceRef] = useKeenSlider<HTMLUListElement>({
@@ -72,8 +75,7 @@ const Slider = ({
                 <SliderController
                     onPrev={prevSlide}
                     onNext={nextSlide}
-                    currentSlide={currentSlide}
-                    maxSlides={slides.length}
+                    className={controllersClassName}
                 />
             ) : null}
             {hasDots ? (
@@ -81,6 +83,8 @@ const Slider = ({
                     count={Math.ceil(slides.length)}
                     activeSlide={currentSlide}
                     changeSlide={changeSlide}
+                    className={dotsClassName}
+                    dotActiveClassName={dotActiveClassName}
                 />
             ) : null}
         </div>

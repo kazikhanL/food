@@ -7,16 +7,20 @@ export interface SliderProps {
     readonly mobCapacity?: number;
     readonly tabCapacity?: number;
     readonly deskCapacity?: number;
+    readonly dotsClassName?: string;
+    readonly dotActiveClassName?: string;
+    readonly controllersClassName?: string;
 }
 
 export interface ControllerProps {
+    className?: string;
     onPrev: () => void;
     onNext: () => void;
-    maxSlides: number;
-    currentSlide: number;
 }
 
 export interface DotsProps {
+    className: string;
+    dotActiveClassName: string;
     count: number;
     activeSlide: number,
     changeSlide: (index: number) => void;
