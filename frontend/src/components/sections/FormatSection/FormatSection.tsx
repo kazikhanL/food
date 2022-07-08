@@ -3,12 +3,13 @@ import { FormatSectionProps } from "./FormatSection.props";
 import SubTitle from "@components/elements/SubTitle/SubTitle";
 import Button from "@components/ui/Button";
 import ButtonLink from "@components/ui/ButtonLink";
+import FormatBlobShape from "@components/icons/FormatBlobShape";
 
 const FormatSection = ({ items }: FormatSectionProps): JSX.Element => {
     const [first, second, third] = items;
 
     return (
-        <section>
+        <section className={styles.section}>
             <div className="container">
                 <h2>В каких форматах мы работаем</h2>
                 <SubTitle>Выберите наиболее подходящий вариант для вашего мероприятия</SubTitle>
@@ -26,6 +27,7 @@ const FormatSection = ({ items }: FormatSectionProps): JSX.Element => {
                         </ButtonLink>
                         <div className={styles.num}>1</div>
                     </article>
+
                     <article>
                         <h3>{second.title}</h3>
                         {second.firstText.split(".").map((text, index) => <p key={index}>{text}</p>)}
@@ -38,6 +40,7 @@ const FormatSection = ({ items }: FormatSectionProps): JSX.Element => {
                         </ButtonLink>
                         <div className={styles.num}>2</div>
                     </article>
+
                     <article>
                         <h3>{third.title}</h3>
                         {third.firstText.split(".").map((text, index) => <p key={index}>{text}</p>)}
@@ -50,6 +53,8 @@ const FormatSection = ({ items }: FormatSectionProps): JSX.Element => {
                     </article>
                 </div>
             </div>
+
+            <FormatBlobShape className={styles.blob} />
         </section>
     );
 };

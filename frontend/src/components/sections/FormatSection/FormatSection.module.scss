@@ -1,6 +1,16 @@
 @import "./../../../styles/variables/fonts";
 @import "./../../../styles/variables/colors";
 
+.section {
+    position: relative;
+}
+
+.blob {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+}
+
 .inner {
     margin-top: 80px;
 
@@ -200,6 +210,10 @@
 
         font-size: 24px;
     }
+
+    .blob {
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {
@@ -219,5 +233,22 @@
                 margin-left: 29%;
             }
         }
+    }
+}
+
+
+@media (max-width: 1700px) {
+    .blob {
+        width: 50%;
+        left: -10%;
+        bottom: -10%;
+    }
+}
+
+@media (max-width: 1380px) {
+    .blob {
+        width: 50%;
+        left: -15%;
+        bottom: -15%;
     }
 }
