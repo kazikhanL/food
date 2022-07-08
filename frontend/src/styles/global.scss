@@ -9,4 +9,6 @@
 body {
     color: $color-dark2;
     font-family: $ff-regular;
+    overflow-x: hidden;
+    margin-right: calc(-1*(100vw - 100%));
 }

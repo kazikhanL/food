@@ -21,6 +21,8 @@ const Overlay = ({ isOpen, children, closeHandler }: OverlayProps): JSX.Element 
         document.addEventListener("keydown", keyDownHandler);
 
         return () => document.removeEventListener("keydown", keyDownHandler);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

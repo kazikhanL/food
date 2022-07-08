@@ -1,4 +1,6 @@
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+
+import { IHomePage } from "@interfaces/pages/IHomePage";
 
 import PromoSection from "@components/sections/PromoSection";
 import { IPromoProps } from "@interfaces/IPromoProps";
@@ -81,7 +83,7 @@ const News: INews[] = [
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
         ],
-        date: new Date,
+        date: new Date().toLocaleDateString(),
     },
     {
         image: "/images/news/news.jpg",
@@ -91,7 +93,7 @@ const News: INews[] = [
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
         ],
-        date: new Date,
+        date: new Date().toLocaleDateString(),
     },
     {
         image: "/images/news/news.jpg",
@@ -101,7 +103,7 @@ const News: INews[] = [
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
         ],
-        date: new Date,
+        date: new Date().toLocaleDateString(),
     },
     {
         image: "/images/news/news.jpg",
@@ -111,7 +113,7 @@ const News: INews[] = [
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
         ],
-        date: new Date,
+        date: new Date().toLocaleDateString(),
     },
     {
         image: "/images/news/news.jpg",
@@ -121,7 +123,7 @@ const News: INews[] = [
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
         ],
-        date: new Date,
+        date: new Date().toLocaleDateString(),
     },
     {
         image: "/images/news/news.jpg",
@@ -131,7 +133,7 @@ const News: INews[] = [
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
             "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
         ],
-        date: new Date,
+        date: new Date().toLocaleDateString(),
     },
 ];
 
@@ -174,7 +176,7 @@ const PromoCards: IPromoCard[] = [
         ],
         characteristics: [
             "Мобильность",
-            "Универсальность", 
+            "Универсальность",
             "Всесезонность",
             "Всесезонность",
         ],
@@ -244,7 +246,7 @@ const PartnerCards: IPartnerCard[] = [
             "Мы разработали варианты меню на все случаи жизни: от закусок и уличной еды до роскошного банкета!",
         ],
     },
-]; 
+];
 
 const GalleryCards: IGalleryCard[] = [
     {
@@ -305,19 +307,33 @@ const GalleryCards: IGalleryCard[] = [
     },
 ];
 
-const Home: NextPage = (): JSX.Element => {
+export const getStaticProps: GetStaticProps<IHomePage> = async () => {
+    return {
+        props: {
+            promoInfo: promoInfo,
+            partnerCards: PartnerCards,
+            galleryCards: GalleryCards,
+            promoCards: PromoCards,
+            news: News,
+            faq: FAQ,
+            seo: seoInfo,
+        },
+    };
+};
+
+export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
+    const { promoInfo, partnerCards, galleryCards, promoCards, news, faq, seo } = props;
+
     return (
         <>
             <PromoSection {...promoInfo} />
-            <PartnerSection descriptionCards={PartnerCards} />
-            <ImplementedSection cards={GalleryCards} />
-            <AssortmentSection cards={PromoCards} />
-            <NewsPromoSection news={News} />
-            <FAQSection FAQ={FAQ} />
+            <PartnerSection descriptionCards={partnerCards} />
+            <ImplementedSection cards={galleryCards} />
+            <AssortmentSection cards={promoCards} />
+            <NewsPromoSection news={news} />
+            <FAQSection FAQ={faq} />
             <ContactsSection />
-            <SeoSection {...seoInfo} />
+            <SeoSection {...seo} />
         </>
     );
-};
-
-export default Home;
+}
