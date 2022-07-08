@@ -1,0 +1,223 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.inner {
+    margin-top: 80px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    article {
+        padding: 70px 30px 30px;
+
+        flex-basis: 32%;
+        position: relative;
+
+        border-radius: 30px;
+        border: 1px dashed #3F86D3;
+
+        h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        a,
+        button {
+            margin: 0 auto;
+            margin-top: 20px;
+            padding: 13px 18px !important;
+
+            display: block;
+            width: min-content;
+
+            white-space: nowrap;
+        }
+
+        &:nth-child(1) {
+            background-color: $color-bg3;
+
+            .num {
+                background-color: $color-companion1;
+
+                &::after {
+                    border-color: $color-companion1;
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            background-color: $color-companion1;
+
+            .num {
+                color: white;
+                background-color: $color-accent2;
+
+                &::after {
+                    border-color: $color-accent2;
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            color: white;
+            background-color: $color-accent2;
+
+            h3,
+            h4 {
+                color: white;
+            }
+
+            .num {
+                background-color: $color-companion1;
+
+                &::after {
+                    border-color: $color-companion1;
+                }
+            }
+
+            .list {
+                p:before {
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
+
+.list {
+    margin-top: 10px;
+
+    p {
+        padding-left: 25px;
+        margin-top: 10px;
+        font-size: 18px !important;
+
+        position: relative;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: $color-dark3;
+
+            position: absolute;
+            top: 8px;
+            left: 10px;
+        }
+    }
+}
+
+.num {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    position: absolute;
+    top: -40px;
+    left: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $color-accent2;
+    font-size: 48px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 120%;
+        height: 120%;
+        border-radius: 50%;
+        border: 2px solid transparent;
+    }
+}
+
+
+@media (max-width: 1100px) {
+    .inner {
+        article {
+            padding: 60px 20px 20px;
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    .inner {
+        flex-wrap: wrap;
+
+        article {
+            padding: 50px 20px 20px;
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            &:nth-child(1) {
+                flex-basis: 48%;
+            }
+
+            &:nth-child(2) {
+                flex-basis: 48%;
+            }
+
+            &:nth-child(3) {
+                margin-top: 43px;
+                flex-basis: 100%;
+            }
+        }
+    }
+
+    .list {
+        p {
+            font-size: 15px !important;
+        }
+    }
+
+    .num {
+        width: 72px;
+        height: 72px;
+
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .inner {
+        article {
+            padding: 18px;
+            margin-top: 53px !important;
+            flex-basis: 100% !important;
+
+            border-radius: 24px;
+
+            &:nth-child(1) {
+                margin-top: 0 !important;
+            }
+
+            h3 {
+                margin-left: 29%;
+            }
+        }
+    }
+}

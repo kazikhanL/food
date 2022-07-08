@@ -27,9 +27,9 @@ const GalleryModal = ({
             closeHandler={closeHandler}
         >
             <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
                 className={styles.wrapper}
             >
