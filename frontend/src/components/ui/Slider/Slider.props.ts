@@ -1,6 +1,8 @@
 export interface SliderProps {
     readonly slides: JSX.Element[];
     readonly spacing?: number;
+    readonly disabled?: boolean;
+    readonly drag?: boolean;
     readonly selectedSlide?: number;
     readonly hasDots?: boolean;
     readonly hasControllers?: boolean;

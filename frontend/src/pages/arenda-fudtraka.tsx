@@ -16,6 +16,9 @@ import { IFormatItem } from "@interfaces/IFormatItem";
 
 import ContactsSection from "@components/sections/ContactsSection";
 
+import SpecializeSection from "@components/sections/SpecializeSection";
+import { IPagePromoLink } from "@interfaces/IPagePromoLink";
+
 
 const promoInfo: IPromoProps = {
     image: "/images/promo/promo-main.png",
@@ -143,6 +146,24 @@ const News: INews[] = [
     },
 ];
 
+const SpecializePages: IPagePromoLink[] = [
+    {
+        image: "/images/page-promo.png",
+        title: "Аренда фудстанции",
+        url: "/arenda-fudtraka",
+    },
+    {
+        image: "/images/page-promo.png",
+        title: "Аренда фудстанции",
+        url: "/zastrojka-fudkorta",
+    },
+    {
+        image: "/images/page-promo.png",
+        title: "Аренда фудстанции",
+        url: "/arenda-fudstancii",
+    },
+]; 
+
 
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -167,6 +188,7 @@ export default function Page(props: any): JSX.Element {
             <PromoSection {...promoInfo} />
             <FormatSection items={formatItems} />
             <NewsPromoSection news={news} />
+            <SpecializeSection pages={SpecializePages} />
             <ContactsSection />
             <SeoSection {...seo} />
         </>
