@@ -1,89 +1,8 @@
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import type { GetStaticProps, GetStaticPaths } from "next";
 
-import { IHomePage } from "@interfaces/pages/IHomePage";
-
-import PromoSection from "@components/sections/PromoSection";
-import { IPromoProps } from "@interfaces/IPromoProps";
-
-import SeoSection from "@components/sections/SeoSection";
-import { ISeoProps } from "@interfaces/ISeoProps";
-
-import NewsPromoSection from "@components/sections/NewsPromoSection";
 import { INews } from "@interfaces/INews";
 
-import FormatSection from "@components/sections/FormatSection";
-import { IFormatItem } from "@interfaces/IFormatItem";
-
-import ContactsSection from "@components/sections/ContactsSection";
-
-import SpecializeSection from "@components/sections/SpecializeSection";
-import { IPagePromoLink } from "@interfaces/IPagePromoLink";
-
-
-const promoInfo: IPromoProps = {
-    image: "/images/promo/promo-main.png",
-    title: "Аренда фудтрака",
-    description: [
-        "Застройка фудкортов на улице и в помещении",
-        "Питание на фестивалях, форумах, и спортивных мероприятиях",
-        "Обслуживание частных мероприятий",
-        "Горячие комплексные обеды для рабочих",
-    ],
-};
-
-const formatItems: IFormatItem[] = [
-    {
-        title: "Сдаём фуд-станции в аренду",
-        firstText: "Вы можете взять в аренду любую фудстанцию и самостоятельно готовить на ней.",
-        list: {
-            title: "Преимущества:",
-            text: [
-                "подходит, если у вас уже есть повар или вы предпочитаете готовить самостоятельно",
-            ],
-        },
-    },
-    {
-        title: "Фуд-станция с питанием",
-        firstText: "Предлагаем комплексное решение: фуд-станция с поваром и едой! Количество порций задаёте вы.",
-        list: {
-            title: "Преимущества:",
-            text: [
-                "вы получаете услугу “под ключ”, в которую входит аренда фуд-станции, услуги повара и готовое питание",
-                "вам не нужно беспокоится о подборе оборудования, продуктов питания и персонала!",
-            ],
-        },
-    },
-    {
-        title: "Работа фуд-станции «на кассу»",
-        firstText: "Идеально подходит, если вам нужно организовать массовое мероприятие при строго ограниченном бюджете. Вы оплачиваете аренду только фуд-станции без еды, а мы продаём питание на месте",
-        list: {
-            title: "Преимущества:",
-            text: [
-                "быстрое и выгодное решение для организации питания большого количества гостей",
-                "минимизация ваших затрат, оптимизация бюджета мероприятия",
-                "все юридические и физические заботы берём на себя!",
-            ],
-        },
-        buttomText: "Заказать фудтрак “на кассу”",
-    },
-];
-
-const seoInfo: ISeoProps = {
-    image: "/images/seo/seo-main.jpg",
-    title: "Релевантный заголовок СЕО-текста",
-    description: [
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-        "Мы вынуждены отталкиваться от того, что перспективное планирование обеспечивает широкому кругу (специалистов) участие в формировании распределения внутренних резервов и ресурсов.",
-        "В своём стремлении повысить качество жизни, они забывают, что высокотехнологичная концепция общественного уклада однозначно определяет каждого участника как способного принимать собственные решения касаемо инновационных методов управления процессами.",
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-        "Мы вынуждены отталкиваться от того, что перспективное планирование обеспечивает широкому кругу (специалистов) участие в формировании распределения внутренних резервов и ресурсов.",
-        "В своём стремлении повысить качество жизни, они забывают, что высокотехнологичная концепция общественного уклада однозначно определяет каждого участника как способного принимать собственные решения касаемо инновационных методов управления процессами.",
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-    ],
-};
-
-const News: INews[] = [
+const NewsItems: INews[] = [
     {
         image: "/images/news/news.jpg",
         title: "Какой-то очень длинный в две строчки заголовок другой статьи 1",
@@ -146,51 +65,44 @@ const News: INews[] = [
     },
 ];
 
-const SpecializePages: IPagePromoLink[] = [
-    {
-        image: "/images/page-promo.png",
-        title: "Аренда фудстанции",
-        url: "/arenda-fudtraka",
-    },
-    {
-        image: "/images/page-promo.png",
-        title: "Аренда фудстанции",
-        url: "/zastrojka-fudkorta",
-    },
-    {
-        image: "/images/page-promo.png",
-        title: "Аренда фудстанции",
-        url: "/arenda-fudstancii",
-    },
-]; 
+import Breadcrumbs from "@components/ui/Breadcrumbs";
+import translateTitle from "@helpers/translateTitle";
+import { IPageLink } from "@interfaces/IPageLink";
+import NewsSection from "@components/sections/NewsSection";
 
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = NewsItems.map((newsItem) => ({ params: { url: translateTitle(newsItem.title) } }));
 
+    return {
+        paths: paths,
+        fallback: true,
+    };
+};
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+    const url = context?.params?.url;
+
+    const currNews = NewsItems.find((item) => translateTitle(item.title) === url);
 
     return {
         props: {
-            promoInfo: promoInfo,
-            formatItems: formatItems,
-            news: News,
-            seo: seoInfo,
+            ...currNews,
         },
     };
 };
 
-
-
-export default function Page(props: any): JSX.Element {
-    const { promoInfo, formatItems, news, seo } = props;
+export default function News(info: INews): JSX.Element {
+    const crumbs: IPageLink[] = [
+        {
+            title: "новости",
+            url: "/news",
+        },
+    ];
 
     return (
         <>
-            <PromoSection {...promoInfo} />
-            <FormatSection items={formatItems} />
-            <NewsPromoSection news={news} />
-            <SpecializeSection pages={SpecializePages} />
-            <ContactsSection />
-            <SeoSection {...seo} />
+            <Breadcrumbs crumbs={crumbs} current={info.title} />
+            <NewsSection {...info} />
         </>
     );
 }

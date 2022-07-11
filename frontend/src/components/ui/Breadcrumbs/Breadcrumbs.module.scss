@@ -1,0 +1,56 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.section {
+    padding: 30px 0;
+}
+
+.wrapper {
+    padding: 10px 0;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    scroll-behavior: smooth;
+}
+
+.arrow {
+    margin: 0 10px;
+    width: 6px;
+}
+
+.linkWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.link {
+    color: $color-dark3;
+
+    transition: color 0.3s;
+
+    &:hover {
+        color: $color-accent1;
+    }
+}
+
+.current {
+    color: $color-dark2;
+}
+
+.link,
+.current {
+    white-space: nowrap;
+    font-size: 14px;
+}

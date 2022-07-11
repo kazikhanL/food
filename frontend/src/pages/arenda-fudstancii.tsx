@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 import { IHomePage } from "@interfaces/pages/IHomePage";
 
