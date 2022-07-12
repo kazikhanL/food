@@ -1,0 +1,100 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.cardWrapper {
+    padding: 15px 10px;
+}
+
+.card {
+    padding: 5px 10px;
+    min-height: 100%;
+    overflow: hidden;
+
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 4px 8px 12px rgba(22, 28, 45, 0.07);
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    p {
+        margin-top: 10px;
+
+        color: $color-dark3;
+        font-size: 18px;
+        line-height: 130%;
+    }
+}
+
+.footer {
+    margin-top: 33px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        color: $color-dark2;
+    }
+}
+
+.iconsWrapper {
+    padding: 8px 28px;
+    position: relative;
+
+    border-radius: 12px;
+    background-color: $color-dark1;
+
+    transition: background-color 0.5s;
+}
+
+.done {
+    position: absolute;
+    top: 25%;
+    left: 52%;
+
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+}
+
+.plus {
+    position: absolute;
+    top: 25%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s;
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 2px;
+        background-color: white;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+}
+
+.active {
+    background-color: $color-accent1;
+
+    .plus {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    .done {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

@@ -1,0 +1,27 @@
+@import "./../../../styles/variables/colors";
+
+.section {
+    background-color: $color-companion1;
+}
+
+.sliderWrapper {
+    margin-top: 30px;
+    position: relative;
+}
+
+.sliderBtns {
+    top: 42%;
+}
+
+@media (max-width: 950px) {
+    .section {
+        & > div {
+            padding-left: 2.5%;
+            width: 100%;
+        }
+    }
+
+    .sliderBtns {
+        display: none;
+    }
+}

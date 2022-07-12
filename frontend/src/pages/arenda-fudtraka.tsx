@@ -16,6 +16,9 @@ import { IFormatItem } from "@interfaces/IFormatItem";
 
 import ContactsSection from "@components/sections/ContactsSection";
 
+import AdditionSection from "@components/sections/AdditionSection";
+import { IAddition } from "@interfaces/IAddition";
+
 import SpecializeSection from "@components/sections/SpecializeSection";
 import { IPagePromoLink } from "@interfaces/IPagePromoLink";
 
@@ -164,7 +167,50 @@ const SpecializePages: IPagePromoLink[] = [
     },
 ]; 
 
-
+const Additions: IAddition[] = [
+    {
+        id: 0,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+    {
+        id: 1,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+    {
+        id: 2,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+    {
+        id: 3,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+    {
+        id: 4,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+    {
+        id: 5,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+    {
+        id: 6,
+        image: "/images/addition.jpg",
+        title: "Урна для пищевых отходов",
+        price: 300,
+    },
+];
 
 export const getStaticProps: GetStaticProps = async () => {
 
@@ -188,6 +234,7 @@ export default function Page(props: any): JSX.Element {
             <PromoSection {...promoInfo} />
             <FormatSection items={formatItems} />
             <NewsPromoSection news={news} />
+            <AdditionSection cards={Additions} />
             <SpecializeSection pages={SpecializePages} />
             <ContactsSection />
             <SeoSection {...seo} />
