@@ -1,332 +1,77 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
+import apolloClient from "@graphql/client";
+import mainPageQuery from "@graphql/mainPageQuery";
+import pagesQuery from "@graphql/pagesQuery";
+import newsQuery from "@graphql/newsQuery";
+
+import { parseMainPage, parseMenu, parseSecondaryPages } from "@helpers/parsers/parsePage";
+import { parseNews } from "@helpers/parsers/parseNews";
+
 import { IHomePage } from "@interfaces/pages/IHomePage";
-
-import PromoSection from "@components/sections/PromoSection";
-import { IPromoProps } from "@interfaces/IPromoProps";
-
-import SeoSection from "@components/sections/SeoSection";
-import { ISeoProps } from "@interfaces/ISeoProps";
-
-import FAQSection from "@components/sections/FAQSection";
-import { IFAQItem } from "@interfaces/IFAQ";
-
-import NewsPromoSection from "@components/sections/NewsPromoSection";
 import { INews } from "@interfaces/INews";
+import { IDirtyMainPage, IDirtyPages } from "@interfaces/dirtyServerResponse/IDirtyPage";
+import { IDirtyNews } from "@interfaces/dirtyServerResponse/IDirtyNews";
+import { ISecondaryPage } from "@interfaces/pages/ISecondaryPage";
 
+import HeaderSection from "@components/sections/HeaderSection";
+import PromoSection from "@components/sections/PromoSection";
+import SeoSection from "@components/sections/SeoSection";
+import FAQSection from "@components/sections/FAQSection";
+import NewsPromoSection from "@components/sections/NewsPromoSection";
 import ImplementedSection from "@components/sections/ImplementedSection";
-import { IGalleryCard } from "@interfaces/IGalleryCard";
-
 import AssortmentSection from "@components/sections/AssortmentSection";
-import { IPromoCard } from "@interfaces/IPromoCard";
-
 import PartnerSection from "@components/sections/PartnerSection";
-import { IPartnerCard } from "@interfaces/IPartnerCard";
-
 import ContactsSection from "@components/sections/ContactsSection";
-
-const promoInfo: IPromoProps = {
-    image: "/images/promo/promo-main.png",
-    title: "Организация питания на выезде",
-    description: [
-        "Застройка фудкортов на улице и в помещении",
-        "Питание на фестивалях, форумах, и спортивных мероприятиях",
-        "Обслуживание частных мероприятий",
-        "Горячие комплексные обеды для рабочих",
-    ],
-};
-
-const seoInfo: ISeoProps = {
-    image: "/images/seo/seo-main.jpg",
-    title: "Релевантный заголовок СЕО-текста",
-    description: [
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-        "Мы вынуждены отталкиваться от того, что перспективное планирование обеспечивает широкому кругу (специалистов) участие в формировании распределения внутренних резервов и ресурсов.",
-        "В своём стремлении повысить качество жизни, они забывают, что высокотехнологичная концепция общественного уклада однозначно определяет каждого участника как способного принимать собственные решения касаемо инновационных методов управления процессами.",
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-        "Мы вынуждены отталкиваться от того, что перспективное планирование обеспечивает широкому кругу (специалистов) участие в формировании распределения внутренних резервов и ресурсов.",
-        "В своём стремлении повысить качество жизни, они забывают, что высокотехнологичная концепция общественного уклада однозначно определяет каждого участника как способного принимать собственные решения касаемо инновационных методов управления процессами.",
-        "Господа, социально-экономическое развитие предполагает независимые способы реализации переосмысления внешнеэкономических политик.",
-    ],
-};
-
-const FAQ: IFAQItem[] = [
-    {
-        question: "Частозадаваемый вопрос  1 ?",
-        answer: "Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос ",
-    },
-    {
-        question: "Частозадаваемый вопрос  2 ?",
-        answer: "Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос ",
-    },
-    {
-        question: "Частозадаваемый вопрос  3 ?",
-        answer: "Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос ",
-    },
-    {
-        question: "Частозадаваемый вопрос  4 ?",
-        answer: "Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос ",
-    },
-    {
-        question: "Частозадаваемый вопрос  5 ?",
-        answer: "Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос Ответ на частозадаваемый вопрос ",
-    },
-];
-
-const News: INews[] = [
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 1",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 2",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 3",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 4",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 5",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 6",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-];
-
-const PromoCards: IPromoCard[] = [
-    {
-        image: "/images/promo-card/promo-card.png",
-        title: "Аренда фудтрака",
-        description: [
-            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
-            "Дополнительно можно установить холодильник-витрину для напитков.",
-        ],
-        characteristics: [
-            "Мобильность",
-            "Универсальность",
-            "Всесезонность",
-        ],
-        link: "/",
-    },
-    {
-        image: "/images/promo-card/promo-card.png",
-        title: "Аренда фудтрака",
-        description: [
-            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
-            "Дополнительно можно установить холодильник-витрину для напитков.",
-        ],
-        characteristics: [
-            "Мобильность",
-            "Всесезонность",
-            "Всесезонность",
-            "Всесезонность",
-        ],
-        link: "/1",
-    },
-    {
-        image: "/images/promo-card/promo-card.png",
-        title: "Аренда фудтрака",
-        description: [
-            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
-            "Дополнительно можно установить холодильник-витрину для напитков.",
-        ],
-        characteristics: [
-            "Мобильность",
-            "Универсальность",
-            "Всесезонность",
-            "Всесезонность",
-        ],
-        link: "/2",
-    },
-    {
-        image: "/images/promo-card/promo-card.png",
-        title: "Аренда фудтрака",
-        description: [
-            "Мобильная перевозная кухня, оборудованная для приготовления различных горячих блюд, а также для подачи десертов и холодных закусок.",
-            "Дополнительно можно установить холодильник-витрину для напитков.",
-        ],
-        characteristics: [
-            "Мобильность",
-            "Универсальность",
-            "Всесезонность",
-        ],
-        link: "/3",
-    },
-];
-
-const PartnerCards: IPartnerCard[] = [
-    {
-        index: 1,
-        title: "Работаем официально",
-        description: [
-            "Обладаем всеми разрешительными документами и патентами",
-            "С нами не страшны проверки контролирующих органов",
-        ],
-    },
-    {
-        index: 2,
-        title: "Проверенные поставщики",
-        description: [
-            "Закупаем продукты со специальной маркировкой в соответствии с требованиями законодательства",
-            "Работаем только с официалами!",
-        ],
-    },
-    {
-        index: 3,
-        title: "Официальная касса",
-        description: [
-            "Официально зарегистрированный кассовый аппарат и лицензия на торговлю ",
-            "Предоставляем все чеки",
-        ],
-    },
-    {
-        index: 4,
-        title: "Многолетний опыт",
-        description: [
-            "Мы кормим людей вкусно и сытно с 2007 года!",
-            "Знаем всё про организацию питания на выезде",
-        ],
-    },
-    {
-        index: 5,
-        title: "Экспертная команда",
-        description: [
-            "Мы поможем вам подобрать самый оптимальный вариант кейтеринга",
-            "А наши повара приятно удивят  гостей вашего мероприятия",
-        ],
-    },
-    {
-        index: 6,
-        title: "Разнообразное меню",
-        description: [
-            "Мы разработали варианты меню на все случаи жизни: от закусок и уличной еды до роскошного банкета!",
-        ],
-    },
-];
-
-const GalleryCards: IGalleryCard[] = [
-    {
-        id: 0,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        video: "/videos/Foodtruck.mp4",
-    },
-    {
-        id: 1,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery.jpg",
-    },
-    {
-        id: 2,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery.jpg",
-    },
-    {
-        id: 4,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        video: "/videos/Foodtruck.mp4",
-    },
-    {
-        id: 5,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery.jpg",
-    },
-    {
-        id: 6,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery.jpg",
-    },
-    {
-        id: 7,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery.jpg",
-    },
-    {
-        id: 3,
-        midImage: "/images/gallery.jpg",
-        miniImage: "/images/gallery.jpg",
-        phoneImage: "/images/gallery-mobil.jpg",
-        modalImage: "/images/gallery.jpg",
-    },
-];
+import FooterSection from "@components/sections/FooterSection";
 
 export const getStaticProps: GetStaticProps<IHomePage> = async () => {
+    let pages: ISecondaryPage[] = [];
+    let news: INews[] = [];
+
+    try {
+        const dirtyPages: IDirtyPages = await apolloClient.query({ query: pagesQuery });
+        pages = parseSecondaryPages(dirtyPages);
+    } catch {
+        pages = [];
+    }
+
+    try {
+        const dirtyNews: IDirtyNews = await apolloClient.query({ query: newsQuery });
+        news = parseNews(dirtyNews);
+    } catch {
+        news = [];
+    }
+
+    const dirtyMainPage: IDirtyMainPage = await apolloClient.query({ query: mainPageQuery });
+
+    const mainPage: IHomePage = parseMainPage(dirtyMainPage);
+
+    const promoCards = pages.map((page) => page.promoInfo);
+
     return {
         props: {
-            promoInfo: promoInfo,
-            partnerCards: PartnerCards,
-            galleryCards: GalleryCards,
-            promoCards: PromoCards,
-            news: News,
-            faq: FAQ,
-            seo: seoInfo,
+            promo: mainPage.promo,
+            partnerCards: mainPage.partnerCards,
+            galleryCards: mainPage.galleryCards,
+            faq: mainPage.faq,
+            seo: mainPage.seo,
+
+            promoCards: promoCards,
+            news: news,
+            menu: parseMenu(pages),
         },
+        revalidate: 100,
     };
 };
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
-    const { promoInfo, partnerCards, galleryCards, promoCards, news, faq, seo } = props;
+    const { promo, partnerCards, galleryCards, promoCards, news, faq, seo, menu } = props;
 
     return (
         <>
-            <PromoSection {...promoInfo} />
+            <HeaderSection pages={menu} />
+            <PromoSection {...promo} />
             <PartnerSection descriptionCards={partnerCards} />
             <ImplementedSection cards={galleryCards} />
             <AssortmentSection cards={promoCards} />
@@ -334,6 +79,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
             <FAQSection FAQ={faq} />
             <ContactsSection />
             <SeoSection {...seo} />
+            <FooterSection pages={menu} />
         </>
     );
 }

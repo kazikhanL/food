@@ -1,77 +1,37 @@
-import type { GetStaticProps, GetStaticPaths } from "next";
+import type { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
 
-import { INews } from "@interfaces/INews";
+import apolloClient from "@graphql/client";
+import newsQuery from "@graphql/newsQuery";
+import pagesQuery from "@graphql/pagesQuery";
 
-const NewsItems: INews[] = [
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 1",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 2",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 3",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 4",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 5",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 6",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-];
-
-import Breadcrumbs from "@components/ui/Breadcrumbs";
-import translateTitle from "@helpers/translateTitle";
 import { IPageLink } from "@interfaces/IPageLink";
+import { INewsItemPage } from "@interfaces/pages/INewsItemPage";
+import { INews } from "@interfaces/INews";
+import { IDirtyNews } from "@interfaces/dirtyServerResponse/IDirtyNews";
+import { ISecondaryPage } from "@interfaces/pages/ISecondaryPage";
+import { IDirtyPages } from "@interfaces/dirtyServerResponse/IDirtyPage";
+
+import translateTitle from "@helpers/translateTitle";
+import { parseNews } from "@helpers/parsers/parseNews";
+import { parseMenu, parseSecondaryPages } from "@helpers/parsers/parsePage";
+
+import HeaderSection from "@components/sections/HeaderSection";
+import Breadcrumbs from "@components/ui/Breadcrumbs";
 import NewsSection from "@components/sections/NewsSection";
+import FooterSection from "@components/sections/FooterSection";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = NewsItems.map((newsItem) => ({ params: { url: translateTitle(newsItem.title) } }));
+    let news: INews[] = [];
+
+    try {
+        const dirtyNews: IDirtyNews = await apolloClient.query({ query: newsQuery });
+        news = parseNews(dirtyNews);
+    } catch {
+        news = [];
+    }
+
+    const paths = news.map((item) => ({ params: { url: translateTitle(item.title) } }));
 
     return {
         paths: paths,
@@ -79,19 +39,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-    const url = context?.params?.url;
+export const getStaticProps: GetStaticProps = async (contex: GetStaticPropsContext<ParsedUrlQuery>) => {
+    let pages: ISecondaryPage[] = [];
+    let news: INews[] = [];
 
-    const currNews = NewsItems.find((item) => translateTitle(item.title) === url);
+    try {
+        const dirtyPages: IDirtyPages = await apolloClient.query({ query: pagesQuery });
+        pages = parseSecondaryPages(dirtyPages);
+    } catch {
+        pages = [];
+    }
+
+    try {
+        const dirtyNews: IDirtyNews = await apolloClient.query({ query: newsQuery });
+        news = parseNews(dirtyNews);
+    } catch {
+        news = [];
+    }
+
+    const url = contex.params ? contex.params.url : "";
+    const currentNews: INews | undefined = news.find((item) => translateTitle(item.title) === url);
 
     return {
         props: {
-            ...currNews,
+            menu: parseMenu(pages),
+            info: currentNews as INews,
         },
+        revalidate: 100,
     };
 };
 
-export default function News(info: INews): JSX.Element {
+export default function News({ menu, info }: INewsItemPage): JSX.Element {
     const crumbs: IPageLink[] = [
         {
             title: "новости",
@@ -101,8 +79,10 @@ export default function News(info: INews): JSX.Element {
 
     return (
         <>
+            <HeaderSection pages={menu} />
             <Breadcrumbs crumbs={crumbs} current={info.title} />
             <NewsSection {...info} />
+            <FooterSection pages={menu} />
         </>
     );
 }

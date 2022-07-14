@@ -1,6 +1,5 @@
 import styles from "./PromoSection.module.scss";
 import { IPromoProps } from "@interfaces/IPromoProps";
-import toWebpFormat from "@helpers/toWebpFormat";
 import DescriptionBlock from "@components/blocks/DescriptionBlock";
 import BlobShapeIcon from "@components/icons/BlobShapeIcon";
 import LeftDecorShapeIcon from "@components/icons/LeftDecorShapeIcon";
@@ -11,7 +10,6 @@ const PromoSection = ({ image, title, description }: IPromoProps): JSX.Element =
             <div className={`container ${styles.wrapper}`}>
                 <DescriptionBlock title={title} description={description} className={styles.description} />
                 <picture className={styles.imageWrapper}>
-                    <source srcSet={toWebpFormat(image)} type="image/webp" />
                     <img
                         className={styles.image}
                         src={image}

@@ -1,77 +1,57 @@
-import NewsCatalog from "@components/sections/NewsCatalog";
+import { GetStaticProps } from "next";
 
+import apolloClient from "@graphql/client";
+import newsQuery from "@graphql/newsQuery";
+import pagesQuery from "@graphql/pagesQuery";
+
+import { parseNews } from "@helpers/parsers/parseNews";
+import { parseMenu, parseSecondaryPages } from "@helpers/parsers/parsePage";
+
+import { INewsPage } from "@interfaces/pages/INewsPage";
+import { IDirtyNews } from "@interfaces/dirtyServerResponse/IDirtyNews";
+import { IDirtyPages } from "@interfaces/dirtyServerResponse/IDirtyPage";
+import { ISecondaryPage } from "@interfaces/pages/ISecondaryPage";
 import { INews } from "@interfaces/INews";
 
-const NewsItems: INews[] = [
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 1",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 2",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 3",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 4",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 5",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-    {
-        image: "/images/news/news.jpg",
-        title: "Какой-то очень длинный в две строчки заголовок другой статьи 6",
-        description: [
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-            "Но начало повседневной работы по формированию позиции играет определяющее значение для укрепления моральных ценностей. В частности, существующая теория создаёт предпосылки для ...",
-        ],
-        date: new Date().toLocaleDateString(),
-    },
-];
-
+import HeaderSection from "@components/sections/HeaderSection";
 import Breadcrumbs from "@components/ui/Breadcrumbs";
+import NewsCatalog from "@components/sections/NewsCatalog";
+import FooterSection from "@components/sections/FooterSection";
 
-export default function News(): JSX.Element {
+export const getStaticProps: GetStaticProps = async () => {
+    let pages: ISecondaryPage[] = [];
+    let news: INews[] = [];
+
+    try {
+        const dirtyPages: IDirtyPages = await apolloClient.query({ query: pagesQuery });
+        pages = parseSecondaryPages(dirtyPages);
+    } catch {
+        pages = [];
+    }
+
+    try {
+        const dirtyNews: IDirtyNews = await apolloClient.query({ query: newsQuery });
+        news = parseNews(dirtyNews);
+    } catch {
+        news = [];
+    }
+
+    return {
+        props: {
+            menu: parseMenu(pages),
+            news,
+        },
+        revalidate: 100,
+    };
+};
+
+export default function News({ menu, news }: INewsPage): JSX.Element {
     return (
         <>
+            <HeaderSection pages={menu} />
             <Breadcrumbs current="Новости компании" />
-            <NewsCatalog news={NewsItems} />
+            <NewsCatalog news={news} />
+            <FooterSection pages={menu} />
         </>
     );
 }

@@ -13,7 +13,7 @@ const GalleryCard = ({
     video,
     visibleImage = "mobil",
 }: IGalleryCard): JSX.Element => {
-    const hasVideo = typeof video !== "undefined";
+    const hasVideo = typeof video === "string";
 
     const getCurrentImage = (): string => {
         switch (visibleImage) {

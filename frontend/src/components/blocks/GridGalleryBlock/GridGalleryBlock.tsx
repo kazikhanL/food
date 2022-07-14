@@ -7,9 +7,9 @@ import GalleryCard from "@components/cards/GalleryCard";
 
 const MediaSkelet = (): JSX.Element => <Skeleton width="100%" height="100%" borderRadius={20} />;
 
-const GridGalleryBlock = ({ cards, slideClickHandler }: GridGalleryBlockProps): JSX.Element => {
-    const images = cards.filter((card) => typeof card.video === "undefined");
-    const videos = cards.filter((card) => typeof card.video !== "undefined");
+const GridGalleryBlock = ({ cards, slideClickHandler }: GridGalleryBlockProps): JSX.Element => {    
+    const images = cards.filter((card) => typeof card.modalImage === "string");
+    const videos = cards.filter((card) => typeof card.video === "string");
 
     return (
         <>

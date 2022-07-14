@@ -27,7 +27,7 @@ const Overlay = ({ isOpen, children, closeHandler }: OverlayProps): JSX.Element 
 
     return (
         <AnimatePresence>
-            {isOpen ? (
+            {isOpen && (
                 <Portal>
                     <div className={styles.container}>
                         <motion.div
@@ -41,7 +41,7 @@ const Overlay = ({ isOpen, children, closeHandler }: OverlayProps): JSX.Element 
                         {children}
                     </div>
                 </Portal>
-            ) : null}
+            )}
         </AnimatePresence>
     );
 };

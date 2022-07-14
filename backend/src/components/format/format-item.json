@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_format_format_items",
+  "info": {
+    "displayName": "formatItem",
+    "icon": "bars"
+  },
+  "options": {},
+  "attributes": {
+    "topTitle": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "bottomTitle": {
+      "type": "string",
+      "required": false,
+      "default": "Преимущества:"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttonText": {
+      "type": "string"
+    }
+  }
+}

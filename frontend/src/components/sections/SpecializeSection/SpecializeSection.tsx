@@ -20,7 +20,7 @@ const getDisplays = (): [boolean, boolean, boolean] => {
 };
 
 const SpecializeSection = ({ pages }: SpecializeSectionProps): JSX.Element => {
-    const slides = pages.map((pageInfo) => <PagePromoCard key={pageInfo.url} {...pageInfo} />);
+    const slides = pages.map((pageInfo) => <PagePromoCard key={pageInfo.link} {...pageInfo} />);
 
     const [[isDesk, isTab, isMob], setDisplays] = useState<[boolean, boolean, boolean]>([true, false, false]);
 

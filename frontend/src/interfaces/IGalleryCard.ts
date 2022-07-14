@@ -3,7 +3,7 @@ export interface IGalleryCard {
     midImage: string;
     miniImage: string;
     phoneImage: string;
-    modalImage?: string;
-    video?: string;
-    visibleImage?: "mini" | "mid" | "mobil";
+    modalImage?: string | undefined | null;
+    video?: string | undefined | null;
+    visibleImage?: "mini" | "mid" | "mobil" | undefined | null;
 }

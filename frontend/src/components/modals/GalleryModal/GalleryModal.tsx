@@ -12,12 +12,12 @@ const GalleryModal = ({
     closeHandler,
 }: GalleryModalProps): JSX.Element => {
     const slides: JSX.Element[] = galleryCards.map((card) => {
-        const hasVideo = typeof card.video !== "undefined";
+        const hasVideo = typeof card.video === "string";
 
         if (hasVideo) {
-            return <video src={card.video} controls />;
+            return <video src={card.video as string} controls />;
         } else {
-            return <img src={card.modalImage} alt={`slide ${card.id}`} />;
+            return <img src={card.modalImage as string} alt={`slide ${card.id}`} />;
         }
     });
 

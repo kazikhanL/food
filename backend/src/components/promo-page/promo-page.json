@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_promo_page_promo_pages",
+  "info": {
+    "displayName": "PromoPage",
+    "icon": "address-book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "characteristics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-text.description-text"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

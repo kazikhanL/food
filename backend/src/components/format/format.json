@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_format_formats",
+  "info": {
+    "displayName": "Format",
+    "icon": "atlas"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "format.format-item",
+      "required": true
+    }
+  }
+}

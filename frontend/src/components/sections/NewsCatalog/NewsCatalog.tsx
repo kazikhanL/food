@@ -10,7 +10,7 @@ const NewsCatalog = ({ news }: NewsCatalogProps): JSX.Element => {
                 <h1>Новости компании</h1>
                 <ul className={styles.list}>
                     {news.map((newsItem, index) => (
-                        <li key={newsItem.title}>
+                        <li key={newsItem.id}>
                             <NewsPromo {...newsItem} direction={index % 2 === 0 ? "default" : "reverse"} />
                         </li>
                     ))}

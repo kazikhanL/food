@@ -1,5 +1,5 @@
-import { IPagePromoLink } from "@interfaces/IPagePromoLink";
+import { IPromoCard } from "@interfaces/IPromoCard";
 
 export interface SpecializeSectionProps {
-    pages: IPagePromoLink[];
+    pages: IPromoCard[];
 }

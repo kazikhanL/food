@@ -26,10 +26,7 @@ const NewsPromo = ({
                     <ArrowIcon />
                 </div>
             </div>
-            <picture>
-                <source srcSet={toWebpFormat(image)} type="image/webp" />
-                <img className={styles.image} src={image} alt={title} width="508" height="381" />
-            </picture>
+            <img className={styles.image} src={image} alt={title} width="508" height="381" />
             <Link href={`/news/${translateTitle(title)}`} prefetch={false}>
                 <a className={styles.link}>{title}</a>
             </Link>

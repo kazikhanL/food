@@ -3,6 +3,7 @@
 
 .section {
     position: relative;
+    overflow: hidden;
 }
 
 .blob {
@@ -39,6 +40,7 @@
         }
 
         p {
+            margin-top: 10px;
             font-size: 20px;
         }
 

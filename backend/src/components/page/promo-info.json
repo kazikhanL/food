@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_page_promo_infos",
+  "info": {
+    "displayName": "PromoInfo",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mainTitle": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-text.description-text",
+      "required": true
+    }
+  }
+}

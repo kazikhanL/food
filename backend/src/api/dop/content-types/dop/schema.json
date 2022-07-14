@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dops",
+  "info": {
+    "singularName": "dop",
+    "pluralName": "dops",
+    "displayName": "dops"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    }
+  }
+}

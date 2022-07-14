@@ -78,7 +78,6 @@ const SeoSection = ({ image, title, description }: ISeoProps): JSX.Element => {
                     className={styles.description}
                 >
                     <picture>
-                        <source srcSet={toWebpFormat(image)} type="image/webp" />
                         <img ref={imageRef} src={image} alt={title} width="486" height="365" />
                     </picture>
                     {description.map((text, index) => <p key={index}>{text}</p>)}
