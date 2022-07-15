@@ -3,7 +3,7 @@ import { IOption } from "@interfaces/forms/IOption";
 
 
 export interface SelectProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    color?: "companion";
+    color?: "companion" | "dark";
     options: IOption[];
     defaultSelectedOption?: IOption;
     wrapperClassName?: string;

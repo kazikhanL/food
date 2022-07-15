@@ -41,7 +41,7 @@ const Select = forwardRef((props: SelectProps, ref: ForwardedRef<HTMLInputElemen
                 <ArrowIcon />
             </p>
             <AnimatePresence>
-                {visibleOptions ? (
+                {visibleOptions && (
                     <motion.ul
                         initial="hidden"
                         animate="visible"
@@ -54,7 +54,7 @@ const Select = forwardRef((props: SelectProps, ref: ForwardedRef<HTMLInputElemen
                             <li key={option.value} onClick={onChange.bind(this, option)}>{option.message}</li>
                         ))}
                     </motion.ul>
-                ) : null}
+                )}
             </AnimatePresence>
             {visibleOptions ? <div className={styles.overlay} /> : null}
         </div>

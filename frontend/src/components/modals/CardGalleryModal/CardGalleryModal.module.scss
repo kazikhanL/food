@@ -1,0 +1,48 @@
+@import "./../../../styles/variables/colors";
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+}
+
+.dots {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+
+    width: 50%;
+
+    button {
+        width: 100% !important;
+        background-color: $color-companion1;
+        border-color: transparent !important;
+    }
+}
+
+.activeDot {
+    background-color: $color-accent2 !important;
+}
+
+.btn {
+    &:first-of-type {
+        left: -70px !important;
+    }
+
+    &:last-of-type {
+        right: -70px !important;
+    }
+}
+
+@media (max-width: 950px) {
+    .btn {
+        display: none !important;
+    }
+}

@@ -1,0 +1,101 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.card {
+    margin: 30px; // remove
+    max-width: 384px; // remove
+
+    padding: 15px;
+
+    background-color: white;
+    box-shadow: 4px 8px 12px rgba(22, 28, 45, 0.07);
+    border-radius: 20px;
+}
+
+.title {
+    margin-top: 20px;
+
+    color: $color-dark1;
+    font-size: 28px;
+    font-family: $ff-bold;
+    line-height: 120%;
+}
+
+.description {
+    margin-top: 10px;
+
+    p {
+        span {
+            color: $color-dark3;
+            margin-right: 5px;
+        }
+
+        color: $color-dark1;
+        line-height: 130%;
+        font-size: 18px;
+    }
+}
+
+.branding {
+    margin-top: 10px;
+
+    color: $color-accent2;
+    font-size: 18px;
+}
+
+.itemPrice {
+    margin-top: 10px;
+
+    span {
+        color: $color-dark3;
+        margin-right: 5px;
+    }
+
+    color: $color-dark1;
+    line-height: 130%;
+    font-size: 18px;
+}
+
+.footer {
+    margin-top: 15px;
+    padding: 15px 0;
+
+    border-top: 1px solid $color-companion1;
+}
+
+.footerTop,
+.footerBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerBottom {
+    margin-top: 15px;
+
+    button {
+        flex-basis: 47%;
+    }
+}
+
+.price {
+    color: $color-dark1;
+    font-family: $ff-bold;
+    font-size: 28px;
+}
+
+.select {
+    flex-basis: 47%;
+    text-align: center;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    svg {
+        margin-right: 10px;
+    }
+}

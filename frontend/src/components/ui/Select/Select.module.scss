@@ -25,6 +25,8 @@
     border: 2px solid transparent;
     border-radius: 12px;
 
+    transition: background-color 0.3s color 0.3s;
+
     cursor: pointer;
 
     svg {
@@ -70,6 +72,37 @@
         color: $color-dark1;
         background-color: $color-companion1;
         border-color: $color-dark1;
+    }
+
+    .list li {
+        color: $color-dark3;
+        border-bottom: 1px solid $color-dark4;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            color: $color-dark1;
+        }
+    }
+}
+
+.dark {
+    .title {
+        color: white;
+        background-color: $color-dark1;
+
+        svg {
+            path {
+                stroke: white !important;
+
+            }
+        }
+
+        &:hover {
+            background-color: #031340;
+        }
     }
 
     .list li {
