@@ -39,9 +39,7 @@ const card1: ISmallCard = {
         { default: "/images/card.jpg", modal: "/images/card.jpg" },
     ],
     title: "Станция c французскими хот-догами “под ключ”",
-    description: [
-        { title: "Что входит:", description: "аренда станции, услуги повара, хот-доги (минимум 30 порций)" },
-    ],
+    description: [{ title: "Что входит:", description: "аренда станции, услуги повара, хот-доги (минимум 30 порций)" }],
     branding: true,
     price: 17000,
     turnkey: { itemPrice: 130, minItems: 30 },

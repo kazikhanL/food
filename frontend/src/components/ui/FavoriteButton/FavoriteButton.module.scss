@@ -1,0 +1,104 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.btn {
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    border: 2px solid $color-accent1;
+
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+
+    span {
+        color: $color-accent1;
+        white-space: nowrap;
+        font-size: 16px;
+        line-height: 110%;
+        font-family: $ff-bold;
+
+        transition: color 0.3s;
+    }
+
+    svg {
+        margin-right: 10px;
+
+        path {
+            stroke: $color-accent1;
+            fill: transparent;
+            transition: stroke 0.3s, fill 0.3s;
+        }
+    }
+
+    &:hover {
+        border-color: #8F038A;
+
+        span {
+            color: #8F038A;
+        }
+
+        svg {
+            path {
+                stroke: #8F038A;
+                fill: #8F038A;
+            }
+        }
+    }
+}
+
+.iconsWrapper {
+    position: relative;
+}
+
+.doneIcon {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    
+    transform: scale(0);   
+    transition: transform 0.5s;
+
+    path {
+        transition: stroke 0.3s;
+    }
+}
+
+.active {
+    background-color: $color-accent1;
+
+    span {
+        color: white;
+    }
+
+    svg {
+        path {
+            fill: white;
+            stroke: white;
+        }
+    }
+
+    .doneIcon {
+        transform: scale(1);
+
+        path {
+            stroke: $color-accent1;
+        }
+    }
+}
+
+.small {
+    padding: 12px;
+
+    span {
+        display: none;
+    }
+}
+
+.bid {
+    span {
+        display: block;
+    }
+}

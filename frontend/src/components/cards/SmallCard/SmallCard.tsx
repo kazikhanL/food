@@ -3,9 +3,9 @@ import { ISmallCard } from "@interfaces/cards/ISmallCard";
 import { IOption } from "@interfaces/forms/IOption";
 import priceToPretty from "@helpers/priceToPretty";
 import CardImageSlider from "@components/ui/CardImageSlider";
-import Button from "@components/ui/Button";
 import Select from "@components/ui/Select";
-import HeartIcon from "@components/icons/HeartIcon";
+import FavoriteButton from "@components/ui/FavoriteButton";
+
 
 const SmallCard = (props: ISmallCard): JSX.Element => {
     const { images, title, description, branding, price, turnkey } = props;
@@ -44,11 +44,7 @@ const SmallCard = (props: ISmallCard): JSX.Element => {
                     <div className={styles.price}>{priceToPretty(price)} ₽</div>
                 </div>
                 <div className={styles.footerBottom}>
-                    <Button color="accent-transparent" className={`${styles.btn} ${styles.favoritesBtn}`}>
-                        <HeartIcon />
-                        В избранное
-                    </Button>
-                    <Button color="white">Добавить</Button>
+                    <FavoriteButton size="big" isActive />
                 </div>
             </div>
         </div>
