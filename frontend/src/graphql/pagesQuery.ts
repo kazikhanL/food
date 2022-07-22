@@ -95,6 +95,7 @@ const pagesQuery = gql`
                             }
                         }
                     }
+                    cardType
                 }
             }
         }

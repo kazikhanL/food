@@ -1,0 +1,27 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.block {
+    margin-top: 60px;
+
+    p {
+        font-size: 24px;
+
+        &:first-child {
+            font-family: $ff-bold;
+        }
+
+        &:last-child {
+            margin-top: 40px;
+
+            svg {
+                margin-left: 7px;
+                fill: $color-accent1;
+
+                path {
+                    stroke: $color-accent1;
+                }
+            }
+        }
+    }
+}

@@ -14,4 +14,5 @@ export interface ISecondaryPage {
     readonly additions: IAddition[];
     readonly specialize: IPromoCard[];
     readonly menu: IPageLink[];
+    readonly cardType: string;
 }

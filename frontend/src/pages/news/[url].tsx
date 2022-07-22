@@ -1,5 +1,4 @@
-import type { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from "next";
-import { ParsedUrlQuery } from "querystring";
+import type { GetServerSideProps } from "next";
 
 import apolloClient from "@graphql/client";
 import newsQuery from "@graphql/newsQuery";
@@ -21,25 +20,7 @@ import Breadcrumbs from "@components/ui/Breadcrumbs";
 import NewsSection from "@components/sections/NewsSection";
 import FooterSection from "@components/sections/FooterSection";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    let news: INews[] = [];
-
-    try {
-        const dirtyNews: IDirtyNews = await apolloClient.query({ query: newsQuery });
-        news = parseNews(dirtyNews);
-    } catch {
-        news = [];
-    }
-
-    const paths = news.map((item) => ({ params: { url: translateTitle(item.title) } }));
-
-    return {
-        paths: paths,
-        fallback: true,
-    };
-};
-
-export const getStaticProps: GetStaticProps = async (contex: GetStaticPropsContext<ParsedUrlQuery>) => {
+export const getServerSideProps: GetServerSideProps = async (contex) => {
     let pages: ISecondaryPage[] = [];
     let news: INews[] = [];
 
@@ -57,13 +38,14 @@ export const getStaticProps: GetStaticProps = async (contex: GetStaticPropsConte
         news = [];
     }
 
-    const url = contex.params ? contex.params.url : "";
+    
+    const url = contex.query.url;
     const currentNews: INews | undefined = news.find((item) => translateTitle(item.title) === url);
 
     return {
         props: {
             menu: parseMenu(pages),
-            info: currentNews as INews,
+            info: currentNews ? currentNews : null,
         },
         revalidate: 100,
     };

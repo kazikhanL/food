@@ -1,0 +1,28 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.section {
+    background-color: $color-bg1;
+}
+
+.list {
+    margin-top: 35px;
+}
+
+.bigList {
+    & > li {
+        margin-top: 40px;
+    }
+}
+
+.smallList {
+    margin: -20px;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > li {
+        margin: 20px;
+        width: 30%;
+    }
+}

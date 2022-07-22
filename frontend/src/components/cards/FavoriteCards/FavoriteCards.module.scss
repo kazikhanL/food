@@ -1,0 +1,101 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.card {
+    max-width: 890px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 4px 8px 12px rgba(22, 28, 45, 0.07);
+    border-radius: 20px;
+}
+
+.gallery {
+    flex-basis: 25%;
+    overflow: hidden;
+}
+
+.wrapper {
+    flex-basis: 73%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid $color-companion1;
+}
+
+.footer {
+    margin-top: 10px;
+    padding-top: 10px;
+
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid $color-companion1;
+}
+
+.priceWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 100%;
+    max-width: 160px;
+}
+
+.title {
+    font-size: 18px;
+    line-height: 120%;
+    font-family: $ff-bold;
+}
+
+.price {
+    margin-left: 30px;
+    font-family: $ff-bold;
+    font-size: 20px;
+    line-height: 120%;
+}
+
+.btnsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete {
+    padding: 20px;
+    color: $color-dark3;
+
+    transition: color 0.3s;
+
+    svg {
+        margin-right: 10px;
+
+        path {
+            fill: $color-dark3;
+
+            transition: fill 0.3s;
+        }
+    }
+
+    &:hover {
+        color: $color-accent1;
+
+        svg {
+            path {
+                fill: $color-accent1;
+            }
+        }
+    }
+}

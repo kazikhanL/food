@@ -60,6 +60,7 @@ export interface IDirtyPage {
         specialization: {
             data: IDirtySpecialization[];
         };
+        cardType: string;
     };
 }
 

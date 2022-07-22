@@ -1,5 +1,4 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { ParsedUrlQuery } from "querystring";
+import { GetServerSideProps } from "next";
 
 import apolloClient from "@graphql/client";
 import pagesQuery from "@graphql/pagesQuery";
@@ -11,31 +10,13 @@ import translateTitle from "@helpers/translateTitle";
 import HeaderSection from "@components/sections/HeaderSection";
 import PromoSection from "@components/sections/PromoSection";
 import FormatSection from "@components/sections/FormatSection";
+import CatalogSection from "@components/sections/CatalogSection";
 import SeoSection from "@components/sections/SeoSection";
 import AdditionSection from "@components/sections/AdditionSection";
 import SpecializeSection from "@components/sections/SpecializeSection";
 import FooterSection from "@components/sections/FooterSection";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    let pages: ISecondaryPage[] = [];
-
-    try {
-        const dirtyPages: IDirtyPages = await apolloClient.query({ query: pagesQuery });
-
-        pages = parseSecondaryPages(dirtyPages);
-    } catch {
-        pages = [];
-    }
-
-    const paths = pages.map((page) => ({ params: { url: translateTitle(page.promo.title) } }));
-
-    return {
-        paths: paths,
-        fallback: true,
-    };
-};
-
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext<ParsedUrlQuery>) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     let pages: ISecondaryPage[] = [];
 
     try {
@@ -59,17 +40,18 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
             additions: currentPage.additions,
             specialize: currentPage.specialize,
             menu: parseMenu(pages),
+            cardType: currentPage.cardType,
         },
-        revalidate: 100,
     };
 };
 
-export default function Page({ promo, format, seo, additions, specialize, menu }: ISecondaryPage): JSX.Element {
+export default function Page({ id, promo, format, seo, additions, specialize, menu, cardType }: ISecondaryPage): JSX.Element {
     return (
         <>
             <HeaderSection pages={menu} />
             <PromoSection {...promo} />
             <FormatSection title={format.title} items={format.items} />
+            <CatalogSection pageTitle={promo.title} pageID={id} type={cardType} />
             <AdditionSection cards={additions} />
             <SpecializeSection pages={specialize} />
             <SeoSection {...seo} />

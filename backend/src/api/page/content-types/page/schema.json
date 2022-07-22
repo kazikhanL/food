@@ -54,6 +54,14 @@
       "repeatable": false,
       "component": "format.format",
       "required": true
+    },
+    "cardType": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "big"
+      ],
+      "default": "big"
     }
   }
 }

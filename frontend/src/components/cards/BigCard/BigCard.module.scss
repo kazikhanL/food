@@ -1,0 +1,236 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+@import "./../../../styles/mixins/scroll";
+
+.wrapper {
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 4px 8px 12px rgba(22, 28, 45, 0.07);
+    border-radius: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    &>div {
+        &:first-of-type {
+            flex-basis: 30%;
+            overflow: hidden;
+        }
+
+        &:nth-child(2) {
+            padding-left: 20px;
+            flex-basis: 70%;
+        }
+    }
+}
+
+.footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-left: 33%;
+
+    border-top: 1px solid $color-dark4;
+
+    flex-basis: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &>div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:first-child {
+            flex-basis: 40%;
+        }
+
+        &:last-child {
+            flex-basis: 55%;
+        }
+    }
+}
+
+.title {
+    font-size: 28px;
+    line-height: 120%;
+    font-family: $ff-bold;
+}
+
+.tagsWrapper {
+    margin: 0 -5px;
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+.tag {
+    margin: 0 5px;
+    padding: 5px 15px;
+    border: 1px solid $color-dark2;
+    border-radius: 15px;
+}
+
+.descrWrapper {
+    margin-top: 15px;
+}
+
+.descr {
+    margin-top: 5px;
+    color: $color-dark3;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.branding {
+    margin-top: 5px;
+    color: $color-accent2;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.price {
+    font-family: $ff-bold;
+    font-size: 28px;
+    line-height: 120%;
+    white-space: nowrap;
+}
+
+.btn {
+    width: min-content;
+    white-space: nowrap;
+}
+
+.select {
+    min-width: 140px;
+}
+
+.topDescr {
+    margin-top: 15px;
+    font-size: 18px;
+    line-height: 120%;
+
+    span {
+        color: $color-dark3;
+        margin-right: 5px;
+    }
+}
+
+.additionsWrapper {
+    margin-top: 15px;
+    border-top: 1px solid $color-dark4;
+}
+
+.additionsWrapperTitle {
+    margin-top: 15px;
+
+    color: $color-dark1;
+    font-size: 20px;
+    line-height: 130%;
+}
+
+.additionsList {
+    margin: 15px 0;
+    padding: 10px;
+    padding-top: 0;
+
+    background-color: $color-bg2;
+    border-radius: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    max-height: 110px;
+    overflow: auto;
+    @include scroll;
+
+    li {
+        margin-top: 10px;
+        flex-basis: 49%;
+
+
+        position: relative;
+
+        label {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+
+            font-size: 17px;
+            line-height: 135%;
+
+            span {
+                color: $color-dark3;
+            }
+
+            cursor: pointer;
+        }
+
+        input {
+            display: none;
+
+            &:checked+.iconWrapper {
+                background-color: $color-accent2;
+
+                svg {
+                    transform: scale(1);
+                }
+            }
+        }
+
+        span {
+            margin-left: 10px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.iconWrapper {
+    display: block;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+
+    border-radius: 5px;
+    border: 1px solid $color-accent2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        transform: scale(0);
+        transition: transform 0.3s;
+    }
+}
+
+.tooltip {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    border-radius: 50%;
+    border: 1px solid $color-dark4;
+
+    color: $color-dark4;
+    font-size: 16px;
+    font-family: $ff-medium;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}

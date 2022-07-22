@@ -1,4 +1,4 @@
-import { IDirtyImage } from "./IDirtyImage";
+import { IImageData } from "./IDirtyImage";
 import { IDirtyMeta } from "./IDirtyMeta";
 
 export interface IDirtyNewsItem {
@@ -6,7 +6,9 @@ export interface IDirtyNewsItem {
     attributes: {
         meta: IDirtyMeta;
         mainTitle: string;
-        image: IDirtyImage;
+        image: {
+            data: IImageData;
+        };
         description: string;
         date: string;
     };

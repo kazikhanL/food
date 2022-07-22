@@ -113,6 +113,7 @@ export const parseSecondaryPage = (dirtyPage: IDirtyPage): ISecondaryPage => {
         additions: dirtyPage.attributes.dops.data.map((addition) => parseDop(addition)),
         specialize: dirtyPage.attributes.specialization.data.map((item) => parseSpecialize(item)),
         menu: [],
+        cardType: dirtyPage.attributes.cardType,
     };
 };
 

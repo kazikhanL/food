@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_card_addition_card_additions",
+  "info": {
+    "displayName": "CardAddition",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "selected": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

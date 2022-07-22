@@ -32,3 +32,25 @@
         background-color: #031340;
     }
 }
+
+.gray {
+    color: $color-accent1;
+    background-color: $color-companion1;
+
+    &:hover {
+        background-color: #E0E0E0;
+    }
+}
+
+.transparent {
+    background-color: transparent;
+    border-color: $color-dark3;
+
+    color: $color-dark3;
+
+    &:hover {
+        color: white;
+        background-color: $color-accent2;
+        border-color: $color-accent2;
+    }
+}

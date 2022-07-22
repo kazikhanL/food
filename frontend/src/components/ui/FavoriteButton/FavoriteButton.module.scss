@@ -87,6 +87,16 @@
             stroke: $color-accent1;
         }
     }
+
+    &:hover {
+        background-color: white;
+
+        .doneIcon {
+            path {
+                stroke: white;
+            }
+        }
+    }
 }
 
 .small {
@@ -94,6 +104,16 @@
 
     span {
         display: none;
+    }
+
+    .iconsWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            margin: 0;
+        }
     }
 }
 

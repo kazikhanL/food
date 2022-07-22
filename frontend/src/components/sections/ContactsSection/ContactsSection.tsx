@@ -47,7 +47,8 @@ const ContactsSection = (): JSX.Element => {
 
     const changeSelectOption = (option: IOption): void => setValue("method", option.value);
 
-    const onSubmit = (data: IContactsForm): void => console.log(data);
+    // change
+    const onSubmit = (data: IContactsForm): void => { data.method; };
 
     return (
         <section className={styles.section}>

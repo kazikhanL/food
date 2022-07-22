@@ -1,0 +1,18 @@
+@import "./../../../styles/variables/fonts";
+@import "./../../../styles/variables/colors";
+
+.section {
+    padding-top: 20px;
+    min-height: 55vh;
+    background-color: $color-bg1;
+}
+
+
+.list {
+    margin-top: 40px;
+    min-height: 400px;
+
+    & > li {
+        margin-top: 40px;
+    }
+}

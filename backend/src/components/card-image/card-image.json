@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_card_image_card_images",
+  "info": {
+    "displayName": "CardImage",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "default": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "modal": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

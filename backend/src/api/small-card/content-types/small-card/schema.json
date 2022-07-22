@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "small_cards",
+  "info": {
+    "singularName": "small-card",
+    "pluralName": "small-cards",
+    "displayName": "SmallCards",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "card-image.card-image",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-text.description",
+      "required": true
+    },
+    "branding": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "turnkey": {
+      "type": "component",
+      "repeatable": false,
+      "component": "turnkey.turnkey"
+    }
+  }
+}

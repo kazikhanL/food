@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import styles from "./NewsPromo.module.scss";
 import { NewsPromoProps, Direction } from "./NewsPromoProps";
-import toWebpFormat from "@helpers/toWebpFormat";
 import translateTitle from "@helpers/translateTitle";
 import ArrowIcon from "@components/icons/ArrowIcon";
 

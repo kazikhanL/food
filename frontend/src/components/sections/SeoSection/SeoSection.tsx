@@ -3,7 +3,6 @@ import { motion, AnimatePresence, Variants, Transition } from "framer-motion";
 
 import styles from "./SeoSection.module.scss";
 import { ISeoProps } from "@interfaces/ISeoProps";
-import toWebpFormat from "@helpers/toWebpFormat";
 import ArrowIcon from "@components/icons/ArrowIcon";
 
 const SeoSection = ({ image, title, description }: ISeoProps): JSX.Element => {

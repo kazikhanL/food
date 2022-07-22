@@ -10,14 +10,20 @@
     },
     "dependencies": {
         "@apollo/client": "^3.6.9",
+        "@reduxjs/toolkit": "^1.8.3",
         "framer-motion": "^6.3.16",
         "graphql": "^16.5.0",
         "keen-slider": "^6.7.0",
         "next": "12.1.6",
+        "rc-pagination": "^3.1.17",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-hook-form": "^7.33.1",
         "react-loading-skeleton": "^3.1.0",
+        "react-redux": "^8.0.2",
+        "redux": "^4.2.0",
+        "redux-devtools-extension": "^2.13.9",
+        "redux-thunk": "^2.4.1",
         "sass": "^1.53.0"
     },
     "devDependencies": {

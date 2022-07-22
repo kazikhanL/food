@@ -25,45 +25,6 @@ import PartnerSection from "@components/sections/PartnerSection";
 import ContactsSection from "@components/sections/ContactsSection";
 import FooterSection from "@components/sections/FooterSection";
 
-// =================
-
-import SmallCard from "@components/cards/SmallCard";
-import { ISmallCard } from "@interfaces/cards/ISmallCard";
-
-const card1: ISmallCard = {
-    id: 0,
-    images: [
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-    ],
-    title: "Станция c французскими хот-догами “под ключ”",
-    description: [{ title: "Что входит:", description: "аренда станции, услуги повара, хот-доги (минимум 30 порций)" }],
-    branding: true,
-    price: 17000,
-    turnkey: { itemPrice: 130, minItems: 30 },
-};
-
-const card2: ISmallCard = {
-    id: 1,
-    images: [
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-        { default: "/images/card.jpg", modal: "/images/card.jpg" },
-    ],
-    title: "Хот-дог станция",
-    description: [
-        { title: "Что входит:", description: "аренда станции, услуги повара, хот-доги (минимум 30 порций)" },
-        { title: "Что входит:", description: "аренда станции, услуги повара, хот-доги (минимум 30 порций)" },
-    ],
-    branding: true,
-    price: 17000,
-    turnkey: null,
-};
-// =================
-
 export const getStaticProps: GetStaticProps<IHomePage> = async () => {
     let pages: ISecondaryPage[] = [];
     let news: INews[] = [];
@@ -95,7 +56,6 @@ export const getStaticProps: GetStaticProps<IHomePage> = async () => {
             galleryCards: mainPage.galleryCards,
             faq: mainPage.faq,
             seo: mainPage.seo,
-
             promoCards: promoCards,
             news: news,
             menu: parseMenu(pages),
@@ -111,10 +71,6 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
         <>
             <HeaderSection pages={menu} />
             <PromoSection {...promo} />
-
-            <SmallCard {...card1} />
-            <SmallCard {...card2} />
-
             <PartnerSection descriptionCards={partnerCards} />
             <ImplementedSection cards={galleryCards} />
             <AssortmentSection cards={promoCards} />

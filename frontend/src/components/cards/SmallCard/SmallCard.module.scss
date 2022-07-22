@@ -2,14 +2,15 @@
 @import "./../../../styles/variables/colors";
 
 .card {
-    margin: 30px; // remove
-    max-width: 384px; // remove
-
     padding: 15px;
+    min-height: 100%;
 
     background-color: white;
     box-shadow: 4px 8px 12px rgba(22, 28, 45, 0.07);
     border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
@@ -54,10 +55,13 @@
     color: $color-dark1;
     line-height: 130%;
     font-size: 18px;
+    
+    margin-bottom: 30px;
 }
 
 .footer {
-    margin-top: 15px;
+    justify-self: flex-end;
+    margin-top: auto;
     padding: 15px 0;
 
     border-top: 1px solid $color-companion1;
@@ -68,6 +72,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.footerTop {
+    & > * {
+        flex-basis: 48%;
+    }
+
+    .price {
+        text-align: right;
+    }
 }
 
 .footerBottom {

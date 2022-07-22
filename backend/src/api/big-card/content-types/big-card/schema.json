@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "big_cards",
+  "info": {
+    "singularName": "big-card",
+    "pluralName": "big-cards",
+    "displayName": "BigCards",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "card-image.card-image"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-text.description"
+    },
+    "branding": {
+      "type": "boolean",
+      "default": true
+    },
+    "price": {
+      "required": true,
+      "type": "decimal"
+    },
+    "topDescription": {
+      "type": "component",
+      "repeatable": false,
+      "component": "description-text.description"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-text.description-text"
+    },
+    "additions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "card-addition.card-addition",
+      "required": false
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  }
+}
