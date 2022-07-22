@@ -5,6 +5,7 @@ import Breadcrumbs from "@components/ui/Breadcrumbs";
 import FavoritesEmptyState from "@components/blocks/FavoritesEmptyState";
 import { useAppSelector } from "@hooks/store";
 import FavoriteBigCard from "@components/cards/FavoriteCards/FavoriteBigCard";
+import FavoriteSmallCard from "@components/cards/FavoriteCards/FavoriteSmallCard";
 
 const FavoritesSection = (): JSX.Element => {
     const cards = useAppSelector((state) => state.favorites);
@@ -25,7 +26,6 @@ const FavoritesSection = (): JSX.Element => {
             <Breadcrumbs current="Избранное" />
             <div className="container">
                 <h1>Избранное</h1>
-
                 {isEmpty ? <FavoritesEmptyState /> : (
                     <motion.ul
                         className={styles.list}
@@ -43,6 +43,20 @@ const FavoritesSection = (): JSX.Element => {
                                     exit="hidden"
                                 >
                                     <FavoriteBigCard {...card} />
+                                </motion.li>
+                            ))}
+                            
+                            {cards.small.map((card) => (
+                                <motion.li
+                                    layout
+                                    key={`${card.id}-${card.title}`}
+                                    transition={transition}
+                                    variants={variants}
+                                    initial="initial"
+                                    animate="animate"
+                                    exit="hidden"
+                                >
+                                    <FavoriteSmallCard {...card} />
                                 </motion.li>
                             ))}
                         </AnimatePresence>

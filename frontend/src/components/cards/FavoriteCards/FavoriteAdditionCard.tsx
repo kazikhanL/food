@@ -1,24 +1,25 @@
 import { useState } from "react";
 
 import styles from "./FavoriteCards.module.scss";
-import { IBigCard } from "@interfaces/cards/IBigCard";
+import { IAddition } from "@interfaces/IAddition";
 import { IOption } from "@interfaces/forms/IOption";
 import CardImageSlider from "@components/ui/CardImageSlider";
 import Select from "@components/ui/Select";
 import CartButton from "@components/ui/CartButton";
 import DeleteIcon from "@components/icons/DeleteIcon";
 import { useAppDispatch, useAppSelector } from "@hooks/store";
-import { addBigCard, removeBigCard } from "@store/slices/cartSlice";
-import { removeBigCardFromFavorite } from "@store/slices/favoriteSlice";
+import { addAdditionCard, removeAdditionCard } from "@store/slices/cartSlice";
+import { removeAdditionFromFavorite } from "@store/slices/favoriteSlice";
 import priceToPretty from "@helpers/priceToPretty";
+import Counter from "@components/ui/Counter";
 
-const FavoriteBigCard = (props: IBigCard): JSX.Element => {
+const FavoriteAdditionCard = (props: IAddition): JSX.Element => {
     const dispatch = useAppDispatch();
-    const cardsFromCart = useAppSelector((state) => state.cart.big);
+    const cardsFromCart = useAppSelector((state) => state.cart.addition);
     const addedCard = cardsFromCart.find((card) => card.id === props.id);
     const hasInCart = typeof addedCard !== "undefined";
 
-    const { images, title, price } = props;
+    const { image, title, price } = props;
 
     const options: IOption[] = [
         { value: "1 сутки", message: "1 сутки" },
@@ -28,21 +29,17 @@ const FavoriteBigCard = (props: IBigCard): JSX.Element => {
         { value: "5 суток", message: "5 суток" },
     ];
 
-    const [selectedDays, setSelectedDays] = useState<IOption>(hasInCart ? addedCard.selectedDays : options[0]);
+    const [selectedDays, setSelectedDays] = useState<IOption>(options[0]);
 
     const deleteFromFavorite = (): void => {
-        dispatch(removeBigCardFromFavorite(props));
+        dispatch(removeAdditionCard(props));
     };
 
     const addInCart = (): void => {
         if (hasInCart) {
-            dispatch(removeBigCard(props));
+            dispatch(removeAdditionCard(props));
         } else {
-            dispatch(addBigCard({
-                ...props,
-                amount: 1,
-                selectedDays: selectedDays,
-            }));
+            dispatch(addAdditionCard({...props}));
         }
     };
 
@@ -53,7 +50,7 @@ const FavoriteBigCard = (props: IBigCard): JSX.Element => {
     return (
         <div className={styles.card}>
             <div className={styles.gallery}>
-                <CardImageSlider media={images} />
+                <img src={image} alt={title} className={styles.img} />
             </div>
             <div className={styles.wrapper}>
                 <p className={styles.title}>{title}</p>
@@ -75,4 +72,4 @@ const FavoriteBigCard = (props: IBigCard): JSX.Element => {
     );
 };
 
-export default FavoriteBigCard;
+export default FavoriteAdditionCard;

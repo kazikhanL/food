@@ -65,6 +65,7 @@
     font-family: $ff-bold;
     font-size: 20px;
     line-height: 120%;
+    white-space: nowrap;
 }
 
 .btnsWrapper {
@@ -98,4 +99,8 @@
             }
         }
     }
+}
+
+.counter {
+    min-width: 170px;
 }
